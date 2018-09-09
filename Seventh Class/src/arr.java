@@ -65,53 +65,46 @@ public class arr {
 		}
 		System.out.println("player at" + pos);
 	}
-	
+
 	private static void arraysum() {
 		// TODO Auto-generated method stub
 
 	}
-	
-	private static void displararr(int [][]arr) {
-		for(int row=0;row<arr.length;row++) {
-			for(int col=0;col<arr[0].length;col++) {
-				System.out.print(arr[row][col]+" ");
+
+	private static void displararr(int[][] arr) {
+		for (int row = 0; row < arr.length; row++) {
+			for (int col = 0; col < arr[0].length; col++) {
+				System.out.print(arr[row][col] + " ");
 			}
 
 			System.out.println();
 		}
 
 	}
-	
+
 	private static void matmul(Scanner scn) {
-		int[][] mat1= {
-				{1,0,0},
-				{0,1,0},
-				{0,0,1}
-				
+		int[][] mat1 = { { 1, 0, 0 }, { 0, 1, 0 }, { 0, 0, 1 }
+
 		};
-		
-		int[][] mat2= {
-				{1,2,3},
-				{4,5,6},
-				{1,2,3}
-				
+
+		int[][] mat2 = { { 1, 2, 3 }, { 4, 5, 6 }, { 1, 2, 3 }
+
 		};
-		
-		int[][] mat3=new int[3][3];
-		int r1=mat1.length;
-		int c1=mat1[0].length;
-		int r2=mat2.length;
-		int c2=mat2[0].length;
-		
-		if(c1!=r2) {
+
+		int[][] mat3 = new int[3][3];
+		int r1 = mat1.length;
+		int c1 = mat1[0].length;
+		int r2 = mat2.length;
+		int c2 = mat2[0].length;
+
+		if (c1 != r2) {
 			System.out.println("mul not possible");
 			return;
-		}
-		else {
-			for(int i=0;i<r1;i++) {
-				for(int j=0;j<c2;j++) {
-					for(int k=0;k<r1;k++) {
-						mat3[i][j]+=mat1[i][k]*mat2[k][j];
+		} else {
+			for (int i = 0; i < r1; i++) {
+				for (int j = 0; j < c2; j++) {
+					for (int k = 0; k < r1; k++) {
+						mat3[i][j] += mat1[i][k] * mat2[k][j];
 					}
 				}
 			}
