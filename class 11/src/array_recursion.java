@@ -9,9 +9,9 @@ public class array_recursion {
 //		System.out.println(search_arr(arr, 5, 0));
 //		System.out.println(find_first_index(arr, 5, 0));
 //		System.out.println(find_last_index(arr, 5, 0));
-		System.out.println(find_all_index(arr, 5, 0, 0));
-		for (int i = 0; i < arr.length; i++) {
-			System.out.println(arr[i]+" ");
+		int[] b = find_all_index(arr, 5, 0, 0);
+		for (int val : b) {
+			System.out.print(val+ " ");
 		}
 
 	}
@@ -91,18 +91,32 @@ public class array_recursion {
 		}
 	}
 
-	private static int[] find_all_index(int[] arr, int data, int cntr, int vidx) {
+//	private static int[] find_all_index(int[] arr, int data, int cntr, int vidx) {
+//		 if (vidx == arr.length) {
+//			int[] rarr = new int[cntr];
+//			return rarr;
+//		}
+//		if (arr[vidx] == data) {
+//			cntr++;
+//		}
+//		int[] ans = find_all_index(arr, data, cntr, vidx + 1);
+//		if (arr[vidx] == data) {
+//			ans[cntr - 1] = vidx;
+//		}
+//		return ans;
+//	}
+	private static int[] find_all_index(int[] arr, int data, int vidx, int asf) {
 		if (vidx == arr.length) {
-			int[] rarr = new int[cntr];
-			return rarr;
+//			int[] rarr = new int[asf];
+			return new int[asf];
 		}
 		if (arr[vidx] == data) {
-			cntr++;
+			int[] res = find_all_index(arr, data, vidx + 1, asf + 1);
+			res[asf] = vidx;
+			return res;
+		} else {
+			int[] res = find_all_index(arr, data, vidx + 1, asf);
+			return res;
 		}
-		int[] ans = find_all_index(arr, data, cntr, vidx + 1);
-		if (arr[vidx] == data) {
-			ans[cntr - 1] = vidx;
-		}
-		return ans;
 	}
 }
