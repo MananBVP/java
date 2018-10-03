@@ -55,9 +55,6 @@ public class Crossword {
 				return false;
 			}
 		}
-
-		// exact fit
-
 		return true;
 	}
 
@@ -114,7 +111,8 @@ public class Crossword {
 	}
 
 }
-/*+-++++++++
+/*input:
++-++++++++
 +-------++
 +-++-+++++
 +-------++

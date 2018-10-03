@@ -5,7 +5,8 @@ public class arraylist {
 	public static void main(String[] args) {
 //     System.out.println(gss("abc"));
 //		System.out.println(gsswithascii("ab"));
-		System.out.println(getkpc("367"));
+//		System.out.println(getkpc("367"));
+		System.out.println(getBoardPath(0, 10));	
 	}
 
 //	public static ArrayList<String> gss1(String str) {
@@ -98,8 +99,24 @@ public class arraylist {
 		}
 		return mresult;
 	}
-	public static ArrayList<String> get_path(String str){
-		
+	public static ArrayList<String> getBoardPath(int src, int dest) {
+		if (src == dest) {
+			ArrayList<String> bs = new ArrayList<>();
+			bs.add("");
+			return bs;
+		}
+		ArrayList<String> mresult = new ArrayList<>();
+
+		for (int i = 1; i <= 6; i++) {
+			if (i > dest) {
+				continue;
+			}
+			ArrayList<String> rs = getBoardPath(src, dest - i);
+			for (String recs : rs) {
+				mresult.add(i + recs);
+			}
+		}
+		return mresult;
 	}
 	}
 
