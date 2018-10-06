@@ -20,7 +20,7 @@ public class n_knights {
 		knightss(board, cq, cellno + 1, asf); // box said no
 		int rno = (cellno - 1) / board.length;
 		int cno = (cellno - 1) % board.length;
-		if (board[rno][cno] == false && isqueensafe(board, rno, cno)) {
+		if (board[rno][cno] == false && isknightsafe(board, rno, cno)) {
 			board[rno][cno] = true;
 			knightss(board, cq + 1, cellno + 1, asf + " " + cellno); // box said yes
 			board[rno][cno] = false;
@@ -32,7 +32,7 @@ public class n_knights {
 		for (int row = 0; row < board.length; row++) {
 			for (int col = 0; col < board.length; col++) {
 				if (board[row][col] == true) {
-					if (isqueensafe(board, row, col) == false) {
+					if (isknightsafe(board, row, col) == false) {
 						return false;
 					}
 				}
@@ -41,16 +41,8 @@ public class n_knights {
 		return true;
 	}
 
-	private static boolean isqueensafe(boolean[][] board, int row, int col) {
-		int[][] dir = { { 1, 2 },
-				{ -1, 2 }, 
-				{ -1, -2 },
-				{ 1, -2 },
-				{ 2, 1 }, 
-				{ 2, -1 }, 
-				{ -2, -1 },
-				{ -2, 1 }, 
-		};
+	private static boolean isknightsafe(boolean[][] board, int row, int col) {
+		int[][] dir = { { 1, 2 }, { -1, 2 }, { -1, -2 }, { 1, -2 }, { 2, 1 }, { 2, -1 }, { -2, -1 }, { -2, 1 }, };
 		for (int dirs[] : dir) {
 			int renemy = row + dirs[0];
 			int cenemy = col + dirs[1];
