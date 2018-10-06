@@ -10,8 +10,8 @@ public class board_path {
 //		printSS("abc", "");
 //		printSSwithascii("abc", "");
 //		printkpc("367", "");
-		printbp(0, 10, "");
-//		printMP(0, 0, 2, 2, "");
+//		printbp(0, 10, "");
+		printMP(0, 0, 2, 2, "");
 
 	}
 
