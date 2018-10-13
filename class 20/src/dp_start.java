@@ -7,10 +7,16 @@ public class dp_start {
 //		System.out.println(printbpM(0, 10, new int[n + 1]));
 //		System.out.println(printbpT(10));
 //		System.out.println(cbpwith6sizearray(10));
-		System.out.println(cmpT(3, 3));
-
+//		System.out.println(cmpT(3, 3));
+		int[][] arr={
+				{ 1, 2, 5, 3, 5  }, 
+				{ 4, 2, 2, 6, 0  }, 
+				{ 0, 8, 1, 1, 4  }, 
+				{ 4, 0, 2, 5, 100},
+				{ 0, 2, 6, 7, 1  }
+	};
+    System.out.println(mcmpT(arr));
 	}
-
 	private static int printbp(int src, int dest) {
 
 		if (src == dest) {
@@ -70,18 +76,61 @@ public class dp_start {
 	}
 
 	private static int cmpT(int r, int c) {
-		int[][] arr = new int[r + 1][c + 1];
-		arr[r][c] = 1;
+		int[][] strg = new int[r + 1][c + 1];
+//		arr[r][c] = 1;
 		for (int i = r; i >= 0; i--) {
 			for (int j = c; j >= 0; j--) {
-				if (i < r) {
-					arr[i][j] += arr[i + 1][j];
-				}
-				if (j < c) {
-					arr[i][j] += arr[i][j + 1];
+//				if (i < r) {
+//					arr[i][j] += arr[i + 1][j];
+//				}
+//				if (j < c) {
+//					arr[i][j] += arr[i][j + 1];
+//				}
+				if (i == r && j == c) {
+					strg[i][j] = 1;
+				} else if (i == r) {
+					strg[i][j] = strg[i][j + 1];
+				} else if (j == c) {
+					strg[i][j] = strg[i + 1][j];
+				} else {
+					strg[i][j] = strg[i][j + 1] + strg[i + 1][j];
 				}
 			}
 		}
-		return arr[0][0];
+		return strg[0][0];
 	}
+
+	private static int mcmpT(int[][] arr) {
+		int[][] strg = new int[arr.length][arr[0].length];
+		for (int i = arr.length - 1; i >= 0; i--) {
+			for (int j = arr[0].length - 1; j >= 0; j--) {
+				if (i == arr.length - 1 && j == arr[0].length - 1) {
+					strg[i][j] = arr[i][j];
+				} else if (i == arr.length - 1) {
+					strg[i][j] = arr[i][j] + strg[i][j + 1];
+				} else if (j == arr[0].length - 1) {
+					strg[i][j] = arr[i][j] + strg[i + 1][j];
+				} else {
+					strg[i][j] = arr[i][j] + Math.min(strg[i + 1][j], strg[i][j + 1]);
+				}
+			}
+		}
+		return strg[0][0];
+	}
+   private static int goldmine(int [][] arr) {
+	   int[][] strg = new int[arr.length][arr[0].length];
+		for (int i = arr.length - 1; i >= 0; i--) {
+			for (int j = arr[0].length - 1; j >= 0; j--) {
+				if (i == arr.length - 1) {
+					strg[i][j] = Math.max(arr[i][j+1],arr[i-1][j+1]);;
+				} else if (j == arr[0].length - 1) {
+					strg[i][j] = arr[i][j];
+				} else {
+					strg[i][j] =Math.max(strg[i + 1][j], strg[i][j + 1]);
+				}
+			}
+		}
+		return strg[0][0];
+
+}
 }
