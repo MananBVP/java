@@ -105,8 +105,8 @@ public class dp_continued {
 		}
 		int mic = Integer.MAX_VALUE;
 		for (int cp = i; cp < j; cp++) {
-			int c1 = MinPalindromeCut(s, i, cp);
-			int c2 = MinPalindromeCut(s, cp + 1, j);
+			int c1 = MinPalindromeCutM(s, i, cp,qb);
+			int c2 = MinPalindromeCutM(s, cp + 1, j,qb);
 			int tc = c1 + c2 + 1;
 			mic = Math.min(mic, tc);
 		}
@@ -125,5 +125,9 @@ public class dp_continued {
 			right--;
 		}
 		return true;
+	}
+	private static int MatrixChainMult(itn[] dims,int i,int j) {
+		
+
 	}
 }
