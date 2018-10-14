@@ -15,8 +15,10 @@ public class dp_continued {
 //		palindromicSubString("abccbc");
 		String s = "abccbc";
 //		System.out.println(MinPalindromeCut(s, 0, s.length() - 1));
-		Integer[][] qb=new Integer[s.length()][s.length()];
-		System.out.println(MinPalindromeCutM(s, 0, s.length()-1, qb));
+//		Integer[][] qb=new Integer[s.length()][s.length()];
+//		System.out.println(MinPalindromeCutM(s, 0, s.length()-1, qb));
+		int[] dims = { 10, 20, 30, 40, 50, 60 };
+		System.out.println(MatrixChainMult(dims, 0, dims.length - 1));
 
 	}
 
@@ -96,21 +98,21 @@ public class dp_continued {
 		return true;
 	}
 
-	private static int MinPalindromeCutM(String s, int i, int j,Integer[][] qb) {
+	private static int MinPalindromeCutM(String s, int i, int j, Integer[][] qb) {
 		if (IsPalindrome(s, i, j) == true) {
 			return 0;
 		}
-		if(qb[i][j]!=null) {
+		if (qb[i][j] != null) {
 			return qb[i][j];
 		}
 		int mic = Integer.MAX_VALUE;
 		for (int cp = i; cp < j; cp++) {
-			int c1 = MinPalindromeCutM(s, i, cp,qb);
-			int c2 = MinPalindromeCutM(s, cp + 1, j,qb);
+			int c1 = MinPalindromeCutM(s, i, cp, qb);
+			int c2 = MinPalindromeCutM(s, cp + 1, j, qb);
 			int tc = c1 + c2 + 1;
 			mic = Math.min(mic, tc);
 		}
-		qb[i][j]=mic;
+		qb[i][j] = mic;
 		return mic;
 	}
 
@@ -126,8 +128,19 @@ public class dp_continued {
 		}
 		return true;
 	}
-	private static int MatrixChainMult(itn[] dims,int i,int j) {
-		
 
+	private static int MatrixChainMult(int[] dims, int i, int j) {
+		if (i + 1 == j) {
+			return 0;
+		}
+		int mic = Integer.MAX_VALUE;
+		for (int cp = i + 1; cp < j; cp++) {
+			int c1 = MatrixChainMult(dims, i, cp);
+			int c2 = MatrixChainMult(dims, cp, j);
+			int muc = dims[i] * dims[cp] * dims[j];
+			int tc = c1 + c2 + muc;
+			mic = Math.min(mic, tc);
+		}
+		return mic;
 	}
 }
