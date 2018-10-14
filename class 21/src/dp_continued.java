@@ -18,7 +18,8 @@ public class dp_continued {
 //		Integer[][] qb=new Integer[s.length()][s.length()];
 //		System.out.println(MinPalindromeCutM(s, 0, s.length()-1, qb));
 		int[] dims = { 10, 20, 30, 40, 50, 60 };
-		System.out.println(MatrixChainMult(dims, 0, dims.length - 1));
+//		System.out.println(MatrixChainMult(dims, 0, dims.length - 1));
+		MatrixChainMultT(dims);
 
 	}
 
@@ -143,4 +144,29 @@ public class dp_continued {
 		}
 		return mic;
 	}
+
+	private static void MatrixChainMultT(int[] dims) {
+		int [][]strg=new int[dims.length-1][dims.length-1];
+		
+		for (int diag = 0; diag < strg.length; diag++) {
+			for(int i=0;i+diag<strg.length;i++) {
+				int j=i+diag;
+				if(diag==0) {
+					strg[i][j]=0;
+				}else {
+					int mic = Integer.MAX_VALUE;
+					for(int k=1;k<=diag;k++) {
+						int c1=strg[i][i+k-1];
+						int c2=strg[i+k][j];
+						int muc=dims[i]*dims[i+k]*dims[j+1];
+						int tc=c1+c2+muc;
+						mic=Math.min(mic, tc);
+					}
+					strg[i][j]=mic;
+				}
+			}
+		}
+		System.out.println(strg[0][strg.length-1]);
+	}
+
 }
