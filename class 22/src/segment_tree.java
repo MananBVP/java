@@ -1,4 +1,4 @@
-public class range_query {
+public class segment_tree {
 	static int[] sa;
 	static int[] ba;
 
