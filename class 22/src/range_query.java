@@ -9,8 +9,14 @@ public class range_query {
 		sa=new int[sz];
 		build(0,0,ba.length-1);
 		
-		System.out.println(query(0, 0, ba.length-1, 1, 3));
-		System.out.println(query(0, 0, ba.length-1, 1, 3));
+		System.out.println(query(0, 0, ba.length-1, 1, 3));//15
+		System.out.println(query(0, 0, ba.length-1, 0, 2));//29
+		update(0, 0, ba.length-1, 3, 10);
+		System.out.println(query(0, 0, ba.length-1, 1, 3));//25
+		System.out.println(query(0, 0, ba.length-1, 0, 2));//29
+		update(0, 0, ba.length-1, 1, -10);
+		System.out.println(query(0, 0, ba.length-1, 1, 3));//15
+		System.out.println(query(0, 0, ba.length-1, 0, 2));//19
 	}
 	
 	private static void build(int si,int ss,int se) {
@@ -30,7 +36,7 @@ public class range_query {
 			return sa[si];
 		}else if(ss>qe || se<qs) { //segment ends before the query starts and segment starts after the query ends
 			return 0;
-		}else {
+		}else { //if a part is in the query
 			int mid=(ss+se)/2;
 			int lc=query(2*si+1, ss, mid, qs, qe);
 			int rc=query(2*si+2, mid+1, se, qs, qe);
@@ -39,7 +45,18 @@ public class range_query {
 	}
 	
 	private static void update(int si,int ss,int se,int bi,int delta) {
-
+		if(ss==se) {
+			ba[bi]+=delta;
+			sa[si]+=delta;
+			return;
+		}
+		int mid=(ss+se)/2;
+		if(bi<=mid) {
+			update(2*si+1, ss, mid, bi, delta);
+		}else {
+			update(2*si+2, mid+1, se, bi, delta);
+		}
+		sa[si]=sa[2*si+1]+sa[2*si+2];
 	}
 	
 	private static int getLog(int n,boolean floor) {
