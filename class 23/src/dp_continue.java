@@ -9,7 +9,8 @@ public class dp_continue {
 //		int[] wt = { 2, 5, 1, 3, 4 };
 //		int[] price = { 15, 14, 10, 16, 30 };
 //		knapsack01(wt, price, 7);
-		System.out.println(egg_drop(2, 10));
+//		System.out.println(egg_drop(2, 10));
+		System.out.println(egg_dropM(2, 10, new int[3][11]));
 	}
 
 	private static boolean[][] printSubarraySum(int[] arr, int sum) {
@@ -73,5 +74,23 @@ public class dp_continue {
 			minofthemaxes = Math.min(worstmina, minofthemaxes);
 		}
 		return minofthemaxes + 1;
+	}
+	private static int egg_dropM(int eggs, int floors,int[][] qb) {
+		if (eggs == 1 || floors == 1 || floors == 0) {
+			return floors;
+		}
+		if(qb[eggs][floors]!=0) {
+			return qb[eggs][floors];
+		}
+		int minofthemaxes = Integer.MAX_VALUE;
+		for (int k = 1; k <= floors; k++) {
+			int maweb = egg_drop(eggs - 1, k - 1);
+			int mawes = egg_drop(eggs,floors-k);
+			int worstmina = Math.max(maweb, mawes);
+			minofthemaxes = Math.min(worstmina, minofthemaxes);
+		}
+		qb[eggs][floors]=minofthemaxes+1;
+		return minofthemaxes + 1;
+
 	}
 }
