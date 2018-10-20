@@ -59,5 +59,7 @@ public class dp_continue {
 		}
 		System.out.println(strg[strg.length-1][strg[0].length-1]);
 	}
-	
+	private static void egg_drop() {
+
+	}
 }
