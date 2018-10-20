@@ -10,7 +10,8 @@ public class dp_continue {
 //		int[] price = { 15, 14, 10, 16, 30 };
 //		knapsack01(wt, price, 7);
 //		System.out.println(egg_drop(2, 10));
-		System.out.println(egg_dropM(2, 10, new int[3][11]));
+//		System.out.println(egg_dropM(2, 10, new int[3][11]));
+		int[] arr= {10,23,9,33,21,50,41,60,80,1};
 	}
 
 	private static boolean[][] printSubarraySum(int[] arr, int sum) {
@@ -91,6 +92,8 @@ public class dp_continue {
 		}
 		qb[eggs][floors]=minofthemaxes+1;
 		return minofthemaxes + 1;
+	}
+	private static int LongestIncreasingSequence(int[] arr) {
 
 	}
 }
