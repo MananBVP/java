@@ -43,6 +43,6 @@ public class dp_continue {
 		}
 	}
 	private static void knapsack() {
-		
+		hgh
 	}
 }
