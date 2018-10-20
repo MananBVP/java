@@ -4,9 +4,9 @@ public class recursionmem {
 
 	public static void main(String[] args) {
       int[] arr= {10,20,30,40,50,60,70};
-//      printTargetSubset(arr, 0, 50, "", 0);
+      printTargetSubset(arr, 0, 50, "", 0);
 //      printTargetSubsets(arr, 0, 50,new ArrayList<Integer>(), 0);
-      printEquiset(arr, 0,new ArrayList<Integer>(),new ArrayList<Integer>(), 0, 0);
+//      printEquiset(arr, 0,new ArrayList<Integer>(),new ArrayList<Integer>(), 0, 0);
       
 	}
 
