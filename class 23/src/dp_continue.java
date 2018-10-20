@@ -11,7 +11,8 @@ public class dp_continue {
 //		knapsack01(wt, price, 7);
 //		System.out.println(egg_drop(2, 10));
 //		System.out.println(egg_dropM(2, 10, new int[3][11]));
-		int[] arr= {10,23,9,33,21,50,41,60,80,1};
+		int[] arr = { 10, 23, 9, 33, 21, 50, 41, 60, 80, 1 };
+		LongestIncreasingSequence(arr);
 	}
 
 	private static boolean[][] printSubarraySum(int[] arr, int sum) {
@@ -70,30 +71,44 @@ public class dp_continue {
 		int minofthemaxes = Integer.MAX_VALUE;
 		for (int k = 1; k <= floors; k++) {
 			int maweb = egg_drop(eggs - 1, k - 1);
-			int mawes = egg_drop(eggs,floors-k);
+			int mawes = egg_drop(eggs, floors - k);
 			int worstmina = Math.max(maweb, mawes);
 			minofthemaxes = Math.min(worstmina, minofthemaxes);
 		}
 		return minofthemaxes + 1;
 	}
-	private static int egg_dropM(int eggs, int floors,int[][] qb) {
+
+	private static int egg_dropM(int eggs, int floors, int[][] qb) {
 		if (eggs == 1 || floors == 1 || floors == 0) {
 			return floors;
 		}
-		if(qb[eggs][floors]!=0) {
+		if (qb[eggs][floors] != 0) {
 			return qb[eggs][floors];
 		}
 		int minofthemaxes = Integer.MAX_VALUE;
 		for (int k = 1; k <= floors; k++) {
 			int maweb = egg_drop(eggs - 1, k - 1);
-			int mawes = egg_drop(eggs,floors-k);
+			int mawes = egg_drop(eggs, floors - k);
 			int worstmina = Math.max(maweb, mawes);
 			minofthemaxes = Math.min(worstmina, minofthemaxes);
 		}
-		qb[eggs][floors]=minofthemaxes+1;
+		qb[eggs][floors] = minofthemaxes + 1;
 		return minofthemaxes + 1;
 	}
-	private static int LongestIncreasingSequence(int[] arr) {
 
+	private static void LongestIncreasingSequence(int[] arr) {
+		int[] strg = new int[arr.length];
+		int omax = 0;
+		strg[0]=1;
+		for (int i = 1; i < arr.length; i++) {
+			strg[i] = 1;
+			for (int j = 0; j < i; j++) {
+				if (arr[j] < arr[i]) {
+					strg[i] = Math.max(strg[j] + 1, strg[i]);
+				}
+				omax = Math.max(omax, strg[i]);
+			}
+		}
+		System.out.println(omax);
 	}
 }
