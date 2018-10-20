@@ -49,28 +49,29 @@ public class dp_continue {
 
 	private static void knapsack01(int[] wt, int[] price, int capacity) {
 		int[][] strg = new int[wt.length + 1][capacity + 1];
-		
+
 		for (int i = 1; i < strg.length; i++) {
 			for (int j = 1; j < strg[0].length; j++) {
-				strg[i][j]=strg[i-1][j];
-				if (j-wt[i-1]>=0) {
-					strg[i][j]=Math.max(strg[i - 1][j],strg[i - 1][j - wt[i - 1]]+ price[i - 1]);
+				strg[i][j] = strg[i - 1][j];
+				if (j - wt[i - 1] >= 0) {
+					strg[i][j] = Math.max(strg[i - 1][j], strg[i - 1][j - wt[i - 1]] + price[i - 1]);
 				}
 			}
 		}
-		System.out.println(strg[strg.length-1][strg[0].length-1]);
+		System.out.println(strg[strg.length - 1][strg[0].length - 1]);
 	}
-	private static int egg_drop(int eggs,int floors) {
-		if(eggs==1 || floors==1 ||floors==0) {
-			 return floors;
+
+	private static int egg_drop(int eggs, int floors) {
+		if (eggs == 1 || floors == 1 || floors == 0) {
+			return floors;
 		}
-		int minofthemaxes=Integer.MAX_VALUE;
-		for(int k=1;k<=floors;k++) {
-			int maweb=egg_drop(eggs-1, k-1);
-			int mawes=egg_drop(eggs, floors-k);
-			int worstmina=Math.min(maweb, mawes);
-			minofthemaxes=Math.min(worstmina, minofthemaxes);
+		int minofthemaxes = Integer.MAX_VALUE;
+		for (int k = 1; k <= floors; k++) {
+			int maweb = egg_drop(eggs - 1, k - 1);
+			int mawes = egg_drop(eggs,floors-k);
+			int worstmina = Math.max(maweb, mawes);
+			minofthemaxes = Math.min(worstmina, minofthemaxes);
 		}
-		return minofthemaxes+1;
+		return minofthemaxes + 1;
 	}
 }
