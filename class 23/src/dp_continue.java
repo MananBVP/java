@@ -6,9 +6,10 @@ public class dp_continue {
 //		boolean[][] strg = new boolean[arr.length + 1][sum + 1];
 //		boolean[][] strg = printSubarraySum(arr, 10);
 //		printSS(arr, strg, "", strg.length - 1, strg[0].length - 1);
-		int[] wt = { 2, 5, 1, 3, 4 };
-		int[] price = { 15, 14, 10, 16, 30 };
-		knapsack01(wt, price, 7);
+//		int[] wt = { 2, 5, 1, 3, 4 };
+//		int[] price = { 15, 14, 10, 16, 30 };
+//		knapsack01(wt, price, 7);
+		System.out.println(egg_drop(2, 10));
 	}
 
 	private static boolean[][] printSubarraySum(int[] arr, int sum) {
@@ -59,7 +60,17 @@ public class dp_continue {
 		}
 		System.out.println(strg[strg.length-1][strg[0].length-1]);
 	}
-	private static void egg_drop() {
-
+	private static int egg_drop(int eggs,int floors) {
+		if(eggs==1 || floors==1 ||floors==0) {
+			 return floors;
+		}
+		int minofthemaxes=Integer.MAX_VALUE;
+		for(int k=1;k<=floors;k++) {
+			int maweb=egg_drop(eggs-1, k-1);
+			int mawes=egg_drop(eggs, floors-k);
+			int worstmina=Math.min(maweb, mawes);
+			minofthemaxes=Math.min(worstmina, minofthemaxes);
+		}
+		return minofthemaxes+1;
 	}
 }
