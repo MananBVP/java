@@ -10,7 +10,7 @@ public class dp_continue {
 
 	private static boolean[][] printSubarraySum(int[] arr, int sum) {
 		boolean[][] strg = new boolean[arr.length + 1][sum + 1];
-		for (int i = 1; i < strg.length; i++) {
+		for (int i = 0; i < strg.length; i++) {
 			strg[i][0] = true;
 		}
 
@@ -41,5 +41,8 @@ public class dp_continue {
 		if (j >= arr[i - 1] && strg[i - 1][j - arr[i - 1]] == true) {
 			printSS(arr, strg, asf + " " + arr[i - 1], i - 1, j - arr[i - 1]);
 		}
+	}
+	private static void knapsack() {
+		
 	}
 }
