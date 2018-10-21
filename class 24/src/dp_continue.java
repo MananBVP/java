@@ -6,9 +6,9 @@ public class dp_continue {
 		int[] coins = { 2, 3, 5, 6 };
 //		CoinChangePTab(coins, 10);
 //		CoinChangeCTab(coins, 10);
-		int[] wt = { 2, 5, 1, 3, 4 };
-		int[] price = { 15, 14, 10, 45, 30 };
-		UnboundedKnapsack(wt, price, 7);
+//		int[] wt = { 2, 5, 1, 3, 4 };
+//		int[] price = { 15, 14, 10, 45, 30 };
+//		UnboundedKnapsack(wt, price, 7);
 		int[] jumps= {3,4,0,1,2,0,3,1,0,2,1};
 	}
 
@@ -77,7 +77,10 @@ public class dp_continue {
 			}
 			max=Math.max(max, strg[i]);
 		}
-		
 		System.out.println(max);
+	}
+	private static void minJumps(int[] jumps) {
+		int[] strg=new int[jumps.length];
+		for(int i=)
 	}
 }
