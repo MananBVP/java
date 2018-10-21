@@ -113,6 +113,6 @@ public class dp_continue {
 				right--;
 			}
 		}
-		System.out.println(strg.length - 1);
+		System.out.println(strg[strg.length - 1]);
 	}
 }
