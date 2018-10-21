@@ -9,8 +9,10 @@ public class dp_continue {
 //		int[] wt = { 2, 5, 1, 3, 4 };
 //		int[] price = { 15, 14, 10, 45, 30 };
 //		UnboundedKnapsack(wt, price, 7);
-		int[] jumps = { 3, 4, 0, 1, 2, 0, 3, 1, 0, 2, 1 };
-		minJumps(jumps);
+//		int[] jumps = { 3, 4, 0, 1, 2, 0, 3, 1, 0, 2, 1 };
+//		minJumps(jumps);
+		int[] costs= {0,3,5,6,15,10,25,12,24};
+		rodCuuting(costs);
 	}
 
 	private static void LongestBitonicSS(int[] arr) {
@@ -95,5 +97,8 @@ public class dp_continue {
 			}
 		}
 		System.out.println(strg[0]);
+	}
+	private static void rodCuuting(int[] costs) {	
+		
 	}
 }
