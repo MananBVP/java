@@ -6,7 +6,9 @@ public class dp_continue {
 		int[] coins = { 2, 3, 5, 6 };
 		CoinChangePTab(coins, 10);
 		CoinChangeCTab(coins, 10);
-
+		int[] wt = { 2, 5, 1, 3, 4 };
+		int[] price = { 15, 14, 10, 16, 30 };
+		UnboundedKnapsack(wt, price, 7);
 	}
 
 	private static void LongestBitonicSS(int[] arr) {
@@ -47,7 +49,7 @@ public class dp_continue {
 				}
 			}
 		}
-		System.out.println(strg[strg.length-1]);
+		System.out.println(strg[strg.length - 1]);
 	}
 
 	private static void CoinChangeCTab(int[] coins, int t) {
@@ -60,6 +62,17 @@ public class dp_continue {
 				}
 			}
 		}
-		System.out.println(strg[strg.length-1]);
+		System.out.println(strg[strg.length - 1]);
+	}
+	private static void UnboundedKnapsack(int[] wt,int[] price,int capacity) {
+		int[] strg=new int[capacity+1];
+		strg[0]=0;
+		for(int i=1;i<strg.length;i++) {
+			for(int j=0;j<wt.length;j++) {
+				if(i-wt[j]>0) {
+					int m=Math.min(a, b)
+				}
+			}
+		}
 	}
 }
