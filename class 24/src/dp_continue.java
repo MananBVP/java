@@ -4,10 +4,10 @@ public class dp_continue {
 //		int[] arr = { 10, 22, 9, 33, 21, 50, 41, 60, 80, 1 };
 //		LongestBitonicSS(arr);
 		int[] coins = { 2, 3, 5, 6 };
-		CoinChangePTab(coins, 10);
-		CoinChangeCTab(coins, 10);
+//		CoinChangePTab(coins, 10);
+//		CoinChangeCTab(coins, 10);
 		int[] wt = { 2, 5, 1, 3, 4 };
-		int[] price = { 15, 14, 10, 16, 30 };
+		int[] price = { 15, 14, 10, 45, 30 };
 		UnboundedKnapsack(wt, price, 7);
 	}
 
@@ -69,10 +69,11 @@ public class dp_continue {
 		strg[0]=0;
 		for(int i=1;i<strg.length;i++) {
 			for(int j=0;j<wt.length;j++) {
-				if(i-wt[j]>0) {
-					int m=Math.min(a, b)
+				if(i-wt[j]>=0) {
+					strg[i]=Math.max(strg[i-wt[j]]+price[j], strg[i]);
 				}
 			}
 		}
+		System.out.println(strg[strg.length-1]);
 	}
 }
