@@ -9,6 +9,7 @@ public class dp_continue {
 		int[] wt = { 2, 5, 1, 3, 4 };
 		int[] price = { 15, 14, 10, 45, 30 };
 		UnboundedKnapsack(wt, price, 7);
+		int[] jumps= {3,4,0,1,2,0,3,1,0,2,1};
 	}
 
 	private static void LongestBitonicSS(int[] arr) {
@@ -67,13 +68,16 @@ public class dp_continue {
 	private static void UnboundedKnapsack(int[] wt,int[] price,int capacity) {
 		int[] strg=new int[capacity+1];
 		strg[0]=0;
+		int max=0;
 		for(int i=1;i<strg.length;i++) {
 			for(int j=0;j<wt.length;j++) {
 				if(i-wt[j]>=0) {
 					strg[i]=Math.max(strg[i-wt[j]]+price[j], strg[i]);
 				}
 			}
+			max=Math.max(max, strg[i]);
 		}
-		System.out.println(strg[strg.length-1]);
+		
+		System.out.println(max);
 	}
 }
