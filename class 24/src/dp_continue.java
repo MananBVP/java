@@ -33,4 +33,8 @@ public class dp_continue {
 		}
 		System.out.println(omax);
 	}
+	private static void CoinChange() {
+		// TODO Auto-generated method stub
+
+	}
 }
