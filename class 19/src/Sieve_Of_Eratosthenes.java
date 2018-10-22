@@ -5,7 +5,8 @@ public class Sieve_Of_Eratosthenes {
 	public static void main(String[] args) {
 //		SieveOfEratosthenes(100);
 //		HighestFreqChar("abccabdddbcadcc");
-		int[] arr= {6,5,4,3,5,1,7,2};
+		int[] arr= {5,9,9,7,8,7,5,6};
+		twoUnique(arr);
 	}
 	
 	private static void SieveOfEratosthenes(int n) {
@@ -58,7 +59,21 @@ public class Sieve_Of_Eratosthenes {
 		}
 		System.out.println(((char) (maxi + 97)));
 	}
-	private static void allUnique(int[] arr) {
-
+	private static void twoUnique(int[] arr) {
+		int xzy=0;
+		for(int val:arr) {
+			xzy^=val;
+		}
+		int lsb=xzy & -xzy;
+		int x=0;
+		int y=0;
+		for(int val:arr) {
+			if((val & lsb)==0) {
+				x^=val;
+			}else {
+				y^=val;
+			}
+		}
+		System.out.println(x+" "+y);
 	}
 }
