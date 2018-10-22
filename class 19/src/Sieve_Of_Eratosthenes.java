@@ -4,7 +4,8 @@ public class Sieve_Of_Eratosthenes {
 
 	public static void main(String[] args) {
 //		SieveOfEratosthenes(100);
-		System.out.println(HighestFreqChar("abccabdddbcadcc"));;
+		System.out.println(HighestFreqChar("abccabdddbcadcc"));
+		;
 	}
 
 	private static void SieveOfEratosthenes(int n) {
@@ -29,18 +30,32 @@ public class Sieve_Of_Eratosthenes {
 	}
 
 	// space=o(alphabet) time=o(n)
+//	private static char HighestFreqChar(String word) {
+//		int[] charac = new int[26];
+//		for (int i = 0; i < word.length(); i++) {
+//			char ch = word.charAt(i);
+//			charac[ch - 'a']++;
+//		}
+//		int maxi = 0;
+//		for (int i = 1; i < charac.length; i++) {
+//			if (charac[i] > charac[maxi]) {
+//				maxi = i;
+//			}
+//		}
+//		return ((char) (maxi + 'a'));
+//	}
 	private static char HighestFreqChar(String word) {
 		int[] charac = new int[26];
 		for (int i = 0; i < word.length(); i++) {
 			char ch = word.charAt(i);
-			charac[ch - 'a']++;
+			charac[ch - 97]++;
 		}
 		int maxi = 0;
-			for(int i=1;i<charac.length;i++) {
-				if(charac[i]>charac[maxi]) {
-					maxi=i;
-				}
+		for (int i = 1; i < charac.length; i++) {
+			if (charac[i] > charac[maxi]) {
+				maxi = i;
 			}
-			return((char)(maxi+'a'));
+		}
+		return ((char) (maxi + 97));
 	}
 }
