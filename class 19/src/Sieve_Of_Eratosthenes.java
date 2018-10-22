@@ -26,4 +26,8 @@ public class Sieve_Of_Eratosthenes {
 			}
 		}
 	}
+	//space=o(alphabet) time=o(n)
+	private static void HighestFreqChar(String word) {
+		
+	}
 }
