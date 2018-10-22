@@ -4,9 +4,10 @@ public class Sieve_Of_Eratosthenes {
 
 	public static void main(String[] args) {
 //		SieveOfEratosthenes(100);
-		HighestFreqChar("abccabdddbcadcc");
+//		HighestFreqChar("abccabdddbcadcc");
+		int[] arr= {6,5,4,3,5,1,7,2};
 	}
-
+	
 	private static void SieveOfEratosthenes(int n) {
 		boolean[] primes = new boolean[n + 1];
 		Arrays.fill(primes, true);
@@ -55,6 +56,9 @@ public class Sieve_Of_Eratosthenes {
 				maxi = i;
 			}
 		}
-		System.out.println(((char) (maxi + 97)));;
+		System.out.println(((char) (maxi + 97)));
+	}
+	private static void allUnique(int[] arr) {
+
 	}
 }
