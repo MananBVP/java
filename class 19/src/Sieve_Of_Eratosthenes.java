@@ -5,10 +5,12 @@ public class Sieve_Of_Eratosthenes {
 	public static void main(String[] args) {
 //		SieveOfEratosthenes(100);
 //		HighestFreqChar("abccabdddbcadcc");
-		int[] arr= {5,9,9,7,8,7,5,6};
-		twoUnique(arr);
+//		int[] arr = { 5, 9, 9, 7, 8, 7, 5, 6 };
+//		twoUnique(arr);
+		int[] arr = { 5, 9, 9, 7, 8, 7, 5, 7, 9, 5 };
+		threeUnique(arr);
 	}
-	
+
 	private static void SieveOfEratosthenes(int n) {
 		boolean[] primes = new boolean[n + 1];
 		Arrays.fill(primes, true);
@@ -59,21 +61,41 @@ public class Sieve_Of_Eratosthenes {
 		}
 		System.out.println(((char) (maxi + 97)));
 	}
+
 	private static void twoUnique(int[] arr) {
-		int xzy=0;
-		for(int val:arr) {
-			xzy^=val;
+		int xzy = 0;
+		for (int val : arr) {
+			xzy ^= val;
 		}
-		int lsb=xzy & -xzy;
-		int x=0;
-		int y=0;
-		for(int val:arr) {
-			if((val & lsb)==0) {
-				x^=val;
-			}else {
-				y^=val;
+		int lsb = xzy & -xzy;
+		int x = 0;
+		int y = 0;
+		for (int val : arr) {
+			if ((val & lsb) == 0) {
+				x ^= val;
+			} else {
+				y ^= val;
 			}
 		}
-		System.out.println(x+" "+y);
+		System.out.println(x + " " + y);
+	}
+
+	private static void threeUnique(int[] arr) {
+		int unique = 0;
+
+		for (int i = 0; i < 32; i++) {
+			int bm = (1 << i);
+			int count = 0;
+			for (int val : arr) {
+				if ((bm & val) == bm) {
+					count++;
+				}
+			}
+			if ((count % 3) == 1) {
+				unique |= bm;
+			}
+
+		}
+		System.out.println(unique);
 	}
 }
