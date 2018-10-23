@@ -7,11 +7,11 @@ public class range_queries_fenwick {
 		arr = new int[] { 2, 5, 9, -3, -6, 0, 7, 1, -1, 8, -7, 3, -4, -5, 6, 7 };
 		 fa = new int[arr.length + 1];
 		build();
-		System.out.println(query(3, 5));
-		System.out.println(query(5, 12));
-		update(4, 5);
-		System.out.println(query(3, 5));
-		System.out.println(query(5, 12));
+		System.out.println(query(3, 10));//-1
+		System.out.println(query(5, 12));//7
+		update(6, 5);
+		System.out.println(query(3, 10));//4
+		System.out.println(query(5, 12));//12
 	}
 
 	private static void build() {
