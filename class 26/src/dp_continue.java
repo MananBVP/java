@@ -7,11 +7,14 @@ public class dp_continue {
 //		System.out.println(lcs(s1, s2));
 //		System.out.println(lcsM(s1, s2, new Integer[s1.length() + 1][s2.length() + 1]));
 //		System.out.println(lcsT(s1, s2));
-		String s1 = "abcdegghjthduuwghhi";
-		String s2 = "acdfgkfejhi";
+//		String s1 = "abcdegghjthduuwghhi";
+//		String s2 = "acdfgkfejhi";
 //		System.out.println(editDistance(s1, s2));
-		System.out.println(editDistanceM(s1, s2, new Integer[s1.length() + 1][s2.length() + 1]));
-		System.out.println(editDistanceT(s1, s2));
+//		System.out.println(editDistanceM(s1, s2, new Integer[s1.length() + 1][s2.length() + 1]));
+//		System.out.println(editDistanceT(s1, s2));
+		String s1 = "abckczybc";
+		System.out
+				.println(LongestPalindromicSubsequence(s1, 0, s1.length() - 1, new Integer[s1.length()][s1.length()]));
 	}
 
 	private static int lcs(String s1, String s2) {
@@ -163,5 +166,28 @@ public class dp_continue {
 			}
 		}
 		return strg[0][0];
+	}
+
+	private static int LongestPalindromicSubsequence(String s1, int i, int j, Integer[][] qb) {
+		if (i > j) {
+			return 0;
+		}
+		if (i == j) {
+			return 1;
+		}
+		if (qb[i][j] != null) {
+			return qb[i][j];
+		}
+		int chs = s1.charAt(i);
+		int che = s1.charAt(j);
+		int ans = 0;
+		if (chs == che) {
+			ans = 2 + LongestPalindromicSubsequence(s1, i + 1, j - 1, qb);
+		} else {
+			int f1 = LongestPalindromicSubsequence(s1, i, j - 1, qb);
+			int f2 = LongestPalindromicSubsequence(s1, i + 1, j, qb);
+			ans = Math.max(f1, f2);
+		}
+		return ans;
 	}
 }
