@@ -5,7 +5,8 @@ public class dp_continue {
 		String s1 = "aebg";
 		String s2 = "abcg";
 //		System.out.println(lcs(s1, s2));
-		System.out.println(lcsM(s1, s2, new Integer[s1.length() + 1][s2.length() + 1]));
+//		System.out.println(lcsM(s1, s2, new Integer[s1.length() + 1][s2.length() + 1]));
+		System.out.println(lcsT(s1, s2));
 	}
 
 	private static int lcs(String s1, String s2) {
@@ -48,5 +49,20 @@ public class dp_continue {
 		}
 		qb[s1.length()][s2.length()] = ans;
 		return ans;
+	}
+
+	private static int lcsT(String s1, String s2) {
+		int[][] strg = new int[s1.length() + 1][s2.length() + 1];
+		for (int i = strg.length - 2; i >= 0; i--) {
+			for (int j = strg[0].length - 2; j >= 0; j--) {
+				if (s1.charAt(i) == s2.charAt(j)) {
+					strg[i][j] = strg[i + 1][j + 1] + 1;
+				} else {
+					strg[i][j] = Math.max(strg[i + 1][j], strg[i][j + 1]);
+				}
+			}
+		}
+
+		return strg[0][0];
 	}
 }
