@@ -1,9 +1,9 @@
 
-public class stack_start {
+public class stack {
 	private int[] arr;
 	private int tos = -1;
 
-	public stack_start(int cap) {
+	public stack(int cap) {
 		this.arr = new int[cap];
 	}
 

@@ -1,8 +1,8 @@
 
-public class client {
+public class client_stack {
 
 	public static void main(String[] args) {
-		stack_start st=new stack_start(5);
+		stack st=new stack(5);
 		
 		st.push(10);
 		st.display();
@@ -29,5 +29,4 @@ public class client {
 		System.out.println(st.top()+" "+st.pop());
 		st.display();
 	}
-
 }
