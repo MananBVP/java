@@ -30,6 +30,7 @@ public class Queue {
 		size--;
 		return val;
 	}
+
 	public int front() {
 		if (size == 0) {
 			System.out.println("Queue is empty");
@@ -38,6 +39,7 @@ public class Queue {
 		int val = arr[front];
 		return val;
 	}
+
 	public int size() {
 		return size;
 	}
@@ -47,9 +49,9 @@ public class Queue {
 	}
 
 	public void dispaly() {
-		for(int i=0;i<size;i++) {
-			int idx=(front+i)%arr.length;
-			System.out.print(arr[idx]+" ");
+		for (int i = 0; i < size; i++) {
+			int idx = (front + i) % arr.length;
+			System.out.print(arr[idx] + " ");
 		}
 		System.out.println(".");
 	}
