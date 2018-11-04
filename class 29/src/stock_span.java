@@ -8,8 +8,11 @@ public class stock_span {
 //			System.out.print(val + " ");
 //		}
 //		System.out.println();
-		int[] arr = { 6, 2, 5, 4, 5, 1, 6 };
-		System.out.println(Largest_Histogram_Area(arr));
+//		int[] arr = { 6, 2, 5, 4, 5, 1, 6 };
+//		System.out.println(Largest_Histogram_Area(arr));
+		String str1="(a+((b+c)+(d+e))+f)";  //false
+		String str2="(a+(((b+c)+(d+e)))+f)"; //true
+		System.out.println(Duplicate_brackets(str1));
 	}
 
 	private static int[] Stock_spn(int[] prices) {
@@ -59,5 +62,22 @@ public class stock_span {
 			maxa = Math.max(carea, maxa);
 		}
 		return maxa;
+	}
+	private static boolean Duplicate_brackets(String str1) {
+		stack st=new stack(str1.length());
+		for(int i=0;i<str1.length();i++) {
+			if(str1.charAt(i)==')') {
+				if(str1.charAt(i)=='(') {
+					return true;
+				}else {
+					while(str1.charAt(i)!='(')
+						st.pop();
+					st.pop();
+				}
+			}else {
+				st.push(str1.charAt(i));
+			}
+		}
+		return false;
 	}
 }
