@@ -98,6 +98,7 @@ public class stock_span {
 				st.pop();
 			}
 		}
+		
 		if(st.size()>0) {
 			return false;
 		}else {
