@@ -3,14 +3,14 @@ public class stock_span {
 
 	public static void main(String[] args) {
 		int[] prices = { 30, 40, 50, 45, 48, 60, 20, 25, 38, 32, 37, 50 };
-		int[] spans = Stack_spn(prices);
+		int[] spans = Stock_spn(prices);
 		for (int val : spans) {
 			System.out.print(val + " ");
 		}
 		System.out.println();
 	}
 
-	private static int[] Stack_spn(int[] prices) {
+	private static int[] Stock_spn(int[] prices) {
 		stack st = new stack(prices.length);
 		int[] spans = new int[prices.length];
 		spans[0] = 1;
@@ -23,5 +23,8 @@ public class stock_span {
 			st.push(i);
 		}
 		return spans;
+	}
+	private static void Largest_Histogram_Area() {
+		
 	}
 }
