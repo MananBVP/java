@@ -10,10 +10,10 @@ public class stock_span {
 //		System.out.println();
 //		int[] arr = { 6, 2, 5, 4, 5, 1, 6 };
 //		System.out.println(Largest_Histogram_Area(arr));
-		String str1="(a+((b+c)+(d+e))+f)";  //false
-		String str2="(a+(((b+c)+(d+e)))+f)"; //true
+		String str1 = "(a+((b+c)+(d+e))+f)"; // false
+		String str2 = "(a+(((b+c)+(d+e)))+f)"; // true
 		System.out.println(Duplicate_brackets(str1));
-		String str3="({[]})";
+		String str3 = "({[]})";
 //		System.out.println(Balanced_brackets(str3));
 	}
 
@@ -65,43 +65,44 @@ public class stock_span {
 		}
 		return maxa;
 	}
+
 	private static boolean Duplicate_brackets(String str1) {
-		stack st=new stack(str1.length());
-		for(int i=0;i<str1.length();i++) {
-			if(str1.charAt(i)==')') {
-				if(st.top()=='(') {
+		stack st = new stack(str1.length());
+		for (int i = 0; i < str1.length(); i++) {
+			if (str1.charAt(i) == ')') {
+				if (st.top() == '(') {
 					return true;
-				}else {
-					while(st.top()!='(')
+				} else {
+					while (st.top() != '(')
 						st.pop();
 					st.pop();
 				}
-			}else {
+			} else {
 				st.push(str1.charAt(i));
 			}
 		}
 		return false;
 	}
+
 	private static boolean Balanced_brackets(String str) {
-		stack st=new stack(str.length());
-		String obs="({[";
-		String cbs=")}]";
-		for(char ch:str.toCharArray()) {
-			if(obs.indexOf(ch)!=-1) {
+		stack st = new stack(str.length());
+		String obs = "({[";
+		String cbs = ")}]";
+		for (char ch : str.toCharArray()) {
+			if (obs.indexOf(ch) != -1) {
 				st.push(ch);
-			}else if(cbs.indexOf(ch) !=-1) {
-				if(st.size()==0) { //more closing
+			} else if (cbs.indexOf(ch) != -1) {
+				if (st.size() == 0) { // more closing
 					return false;
-				}else if(obs.indexOf(st.top())!=cbs.indexOf(ch)) {
+				} else if (obs.indexOf(st.top()) != cbs.indexOf(ch)) { //brackets mismatching
 					return false;
 				}
 				st.pop();
 			}
 		}
-		
-		if(st.size()>0) {
+		if (st.size() > 0) { //more opening
 			return false;
-		}else {
+		} else {
 			return true;
 		}
 	}
