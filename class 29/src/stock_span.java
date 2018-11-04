@@ -13,6 +13,8 @@ public class stock_span {
 		String str1="(a+((b+c)+(d+e))+f)";  //false
 		String str2="(a+(((b+c)+(d+e)))+f)"; //true
 		System.out.println(Duplicate_brackets(str1));
+		String str3="({[]})";
+//		System.out.println(Balanced_brackets(str3));
 	}
 
 	private static int[] Stock_spn(int[] prices) {
@@ -67,10 +69,10 @@ public class stock_span {
 		stack st=new stack(str1.length());
 		for(int i=0;i<str1.length();i++) {
 			if(str1.charAt(i)==')') {
-				if(str1.charAt(i)=='(') {
+				if(st.top()=='(') {
 					return true;
 				}else {
-					while(str1.charAt(i)!='(')
+					while(st.top()!='(')
 						st.pop();
 					st.pop();
 				}
@@ -79,5 +81,27 @@ public class stock_span {
 			}
 		}
 		return false;
+	}
+	private static boolean Balanced_brackets(String str) {
+		stack st=new stack(str.length());
+		String obs="({[";
+		String cbs=")}]";
+		for(char ch:str.toCharArray()) {
+			if(obs.indexOf(ch)!=-1) {
+				st.push(ch);
+			}else if(cbs.indexOf(ch) !=-1) {
+				if(st.size()==0) { //more closing
+					return false;
+				}else if(obs.indexOf(st.top())!=cbs.indexOf(ch)) {
+					return false;
+				}
+				st.pop();
+			}
+		}
+		if(st.size()>0) {
+			return false;
+		}else {
+			return true;
+		}
 	}
 }
