@@ -16,7 +16,7 @@ public class QueueToStack {
 		dynamic_queue temp = dq;
 		dq = hq;
 		hq = temp;
-	}
+	} 
 
 	public int pop() {
 		return dq.deQueue();
