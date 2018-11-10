@@ -14,6 +14,19 @@ public class Client_queue {
 		obj.enQueue(70);
 		obj.enQueue(80);
 		obj.dispaly();
+		queuetostack();
 	}
-
+	private static void queuetostack() {
+		QueueToStack qs=new QueueToStack(5);
+		qs.push(10);
+		qs.push(20);
+		qs.push(30);
+		qs.push(40);
+		System.out.println(qs.top()+" "+qs.pop());
+		System.out.println(qs.top()+" "+qs.pop());
+		System.out.println(qs.top()+" "+qs.pop());
+		System.out.println(qs.top()+" "+qs.pop());
+		
+	}
+	
 }
