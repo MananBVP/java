@@ -159,4 +159,21 @@ public class Linked_List {
 		}
 		System.out.println(".");
 	}
+	
+	public void reverseDI() {  //Reverse Data Iterative
+		int l=0;
+		int r=size-1;
+		while(l<r) {
+			Node n1=getNodeAt(l);
+			Node n2=getNodeAt(r);
+			int temp=n1.data;
+			n1.data=n2.data;
+			n2.data=temp;
+			l++;
+			r--;
+		}
+	}
+	public void reversePI() {  //Reverse Pointer Iterative
+		
+	}
 }

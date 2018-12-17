@@ -32,10 +32,12 @@ public class Client {
 		list.dispaly();
 		System.out.println(list.removeAt(3));
 		list.dispaly();
-		while(!list.isEmpty()) {
-			System.out.println(list.removeLast());
-			list.dispaly();
-		}
+		list.reverseDI();
+		list.dispaly();
+//		while(!list.isEmpty()) {
+//			System.out.println(list.removeLast());
+//			list.dispaly();
+//		}
 	}
 
 }
