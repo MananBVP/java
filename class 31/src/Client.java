@@ -32,7 +32,9 @@ public class Client {
 		list.dispaly();
 		System.out.println(list.removeAt(3));
 		list.dispaly();
-		list.reverseDI();
+//		list.reverseDI();
+//		list.dispaly();
+		list.reversePI();
 		list.dispaly();
 //		while(!list.isEmpty()) {
 //			System.out.println(list.removeLast());
