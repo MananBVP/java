@@ -9,7 +9,7 @@ public class Linked_List {
 	Node tail;
 	int size;
 
-	public int getFirst() {
+	public int getFirst() {  //O(1)
 		if(size==0) {
 			return -1;
 		}else {
@@ -17,14 +17,14 @@ public class Linked_List {
 		}
 	}
 
-	public int getLast() {
+	public int getLast() {  //O(1)
 		if(size==0) {
 			return -1;
 		}
 		return tail.data;
 	}
 
-	public int getAt(int idx) {
+	public int getAt(int idx) {  //O(n)
 		if(idx<0 || idx>=size) {
 			System.out.println("Index Out of Bound");
 			return -1;
@@ -37,7 +37,7 @@ public class Linked_List {
 		}
 	}
 
-	public void addFirst(int data) {
+	public void addFirst(int data) {  //O(1)
 		Node node = new Node();
 		node.data = data;
 		if (size == 0) {
@@ -63,11 +63,25 @@ public class Linked_List {
 		size++;
 	}
 
-	public void addAt(int idx, int data) {
-
+	public void addAt(int idx, int data) {  //O(n)
+		if(idx<0 || idx>size) {
+			System.out.println("Index Out of Bound");
+		}else if(idx==0) {
+			addFirst(data);
+		}else if(idx==size) {
+			addLast(data);
+		}else {
+			Node m1=getNodeAt(idx-1);
+			Node n=m1.next;
+			Node node=new Node();
+			node.data=data;
+			size++;
+			m1.next=node;
+			node.next=n;
+		}
 	}
 
-	public int removeFirst() {
+	public int removeFirst() { //O(1)
 		Node node;
 		if(size==0) {
 			return -1;
@@ -84,7 +98,7 @@ public class Linked_List {
 		return node.data;
 	}
 
-	public int removeLast() {
+	public int removeLast() {  //O(n)
 		Node node;
 		if(size==0) {
 			return -1;
@@ -103,7 +117,7 @@ public class Linked_List {
 		}
 	}
 
-	public int removeAt(int idx) {
+	public int removeAt(int idx) {  //O(n)
 		if(idx<0 ||idx>=size) {
 			System.out.println("Index out of bound");
 			return -1;
@@ -116,7 +130,7 @@ public class Linked_List {
 			int data=node.next.data;
 			node.next=node.next.next;
 			size--;
-		return data;
+		    return data;
 		}
 	}
 
@@ -127,7 +141,7 @@ public class Linked_List {
 	public boolean isEmpty() { //O(1)
 		return size == 0;
 	}
-	private Node getNodeAt(int idx) {
+	private Node getNodeAt(int idx) {  //O(n)
 		if(idx<0 || idx>=size) {
 			System.out.println("Index Out of Bound");
 			return null;
@@ -139,7 +153,7 @@ public class Linked_List {
 		return temp;
 		}
 	}
-	public void dispaly() {
+	public void dispaly() { //O(n)
 		for (Node node = head; node != null; node = node.next) {
 			System.out.print(node.data + " -> ");
 		}
