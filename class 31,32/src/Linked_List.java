@@ -220,47 +220,79 @@ public class Linked_List {
 			return false;
 		}
 	}
-	
+
 	public void fold() {
-		foldLeft=head;
-		fold(head,0);
+		foldLeft = head;
+		fold(head, 0);
 	}
+
 	private Node foldLeft;
-	private void fold(Node right,int floor) {
-		if(right == null) {
+
+	private void fold(Node right, int floor) {
+		if (right == null) {
 			return;
 		}
-		fold(right.next,floor + 1);
-		if(floor> size/2) {
-			Node temp=foldLeft.next;
-			foldLeft.next=right;
-			right.next=temp;
-			foldLeft=temp;
+		fold(right.next, floor + 1);
+		if (floor > size / 2) {
+			Node temp = foldLeft.next;
+			foldLeft.next = right;
+			right.next = temp;
+			foldLeft = temp;
 		}
-		if(floor == size/2) {
-			tail=right;
-			tail.next=null;
+		if (floor == size / 2) {
+			tail = right;
+			tail.next = null;
 		}
 	}
+
 	public int mid() {
-		Node slow=head;
-		Node fast=head;
-		while(fast.next!=null && fast.next.next!=null) {
-			slow=slow.next;
-			fast=fast.next.next;
+		Node slow = head;
+		Node fast = head;
+		while (fast.next != null && fast.next.next != null) {
+			slow = slow.next;
+			fast = fast.next.next;
 		}
 		return slow.data;
 	}
+
 	public int kthFromLast(int k) {
-		Node slow=head;
-		Node fast=head;
-		for(int i=0;i<k;i++) {
-			fast=fast.next;
+		Node slow = head;
+		Node fast = head;
+		for (int i = 0; i < k; i++) {
+			fast = fast.next;
 		}
-		while(fast!=null) {
-			slow=slow.next;
-			fast=fast.next;
+		while (fast != null) {
+			slow = slow.next;
+			fast = fast.next;
 		}
 		return slow.data;
+	}
+
+	public static Linked_List mergeTwoSortedLists(Linked_List l1, Linked_List l2) {
+		Node n1 = l1.head;
+		Node n2 = l2.head;
+		Linked_List list = new Linked_List();
+		while (n1 != null && n2 != null) {
+			if (n1.data <= n2.data) {
+				list.addLast(n1.data);
+				n1 = n1.next;
+			} else {
+				list.addLast(n2.data);
+				n2 = n2.next;
+			}
+		}
+		if (n1 != null) {
+			while (n1 != null) {
+				list.addLast(n1.data);
+				n1=n1.next;
+			}
+		}
+		if (n2 != null) {
+			while (n2 != null) {
+				list.addLast(n2.data);
+				n2=n2.next;
+			}
+		}
+		return list;
 	}
 }

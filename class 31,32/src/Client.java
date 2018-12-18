@@ -40,19 +40,36 @@ public class Client {
 //			System.out.println(list.removeLast());
 //			list.dispaly();
 //		}
-		list.addLast(10);
-		list.addLast(20);
-		list.addLast(30);
-		list.addLast(40);
-		list.addLast(50);
-		list.addLast(60);
-		list.addLast(70);
+//		list.addLast(10);
+//		list.addLast(20);
+//		list.addLast(30);
+//		list.addLast(40);
+//		list.addLast(50);
+//		list.addLast(60);
+//		list.addLast(70);
 //		System.out.println(list.isPalindrome());
 //		list.fold();
 //		list.dispaly();
-		System.out.println(list.mid());
-		System.out.println(list.kthFromLast(1));
+//		System.out.println(list.mid());
+//		System.out.println(list.kthFromLast(1));
 //		list.dispaly();
+		Linked_List l1=new Linked_List();
+		Linked_List l2=new Linked_List();
+		l1.addLast(10);
+		l1.addLast(15);
+		l1.addLast(20);
+		l1.addLast(25);
+		l1.addLast(30);
+		l1.addLast(35);
+		
+		l2.addLast(12);
+		l2.addLast(45);
+		l2.addLast(50);
+		l2.addLast(55);
+		l2.addLast(60);
+		Linked_List newlist=new Linked_List().mergeTwoSortedLists(l1, l2);
+		newlist.dispaly();
+		
 	}
 
 }
