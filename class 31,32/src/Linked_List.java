@@ -284,15 +284,51 @@ public class Linked_List {
 		if (n1 != null) {
 			while (n1 != null) {
 				list.addLast(n1.data);
-				n1=n1.next;
+				n1 = n1.next;
 			}
 		}
 		if (n2 != null) {
 			while (n2 != null) {
 				list.addLast(n2.data);
-				n2=n2.next;
+				n2 = n2.next;
 			}
 		}
 		return list;
+	}
+
+	private Node midNode() {
+		Node slow = head;
+		Node fast = head;
+		while (fast.next != null && fast.next.next != null) {
+			slow = slow.next;
+			fast = fast.next.next;
+		}
+		return slow;
+	}
+
+	private static Linked_List breaking(Node head, Node tail) {
+		Linked_List list = new Linked_List();
+		list.head = head;
+		list.tail = tail;
+		return list;
+	}
+
+	public static Linked_List mergesort(Linked_List list) {
+		if (list.head == list.tail) {
+			Linked_List newlist = new Linked_List();
+			newlist.addLast(list.head.data);
+			return newlist;
+		}
+		Node mid = list.midNode();
+		Node midn = mid.next;
+		mid.next = null;
+		Linked_List left, right;
+		left = breaking(list.head, mid);
+		right = breaking(midn, list.tail);
+		left = mergesort(left);
+		right = mergesort(right);
+		Linked_List sorted = mergeTwoSortedLists(left, right);
+		mid.next = midn;
+		return sorted;
 	}
 }

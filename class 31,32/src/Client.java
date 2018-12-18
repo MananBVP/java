@@ -1,3 +1,4 @@
+import org.omg.PortableServer.LIFESPAN_POLICY_ID;
 
 public class Client {
 
@@ -67,8 +68,11 @@ public class Client {
 		l2.addLast(50);
 		l2.addLast(55);
 		l2.addLast(60);
-		Linked_List newlist=new Linked_List().mergeTwoSortedLists(l1, l2);
-		newlist.dispaly();
+//		Linked_List newlist=new Linked_List().mergeTwoSortedLists(l1, l2);
+//		newlist.dispaly();
+		
+		Linked_List new1=Linked_List.mergesort(l1);
+		new1.dispaly();
 		
 	}
 
