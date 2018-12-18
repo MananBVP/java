@@ -40,13 +40,18 @@ public class Client {
 //			System.out.println(list.removeLast());
 //			list.dispaly();
 //		}
-		list.addFirst(10);
-		list.addFirst(20);
-		list.addFirst(30);
-		list.addFirst(30);
-		list.addFirst(20);
-		list.addFirst(10);
-		System.out.println(list.isPalindrome());
+		list.addLast(10);
+		list.addLast(20);
+		list.addLast(30);
+		list.addLast(40);
+		list.addLast(50);
+		list.addLast(60);
+		list.addLast(70);
+//		System.out.println(list.isPalindrome());
+//		list.fold();
+//		list.dispaly();
+		System.out.println(list.mid());
+//		list.dispaly();
 	}
 
 }

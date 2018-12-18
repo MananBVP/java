@@ -177,45 +177,78 @@ public class Linked_List {
 	}
 
 	public void reversePI() { // Reverse Pointer Iterative O(n)
-		if(size==1) {
+		if (size == 1) {
 			return;
 		}
-		Node a=head;
-		Node b=a.next;
-		Node c=b.next;
-		while(b!=null) {
-			b.next=a;
-			a=b;
-			b=c;
-			if(c!=null) {
-				c=c.next;
+		Node a = head;
+		Node b = a.next;
+		Node c = b.next;
+		while (b != null) {
+			b.next = a;
+			a = b;
+			b = c;
+			if (c != null) {
+				c = c.next;
 			}
 		}
-		Node temp=head;
-		head=tail;
-		tail=temp;
-		tail.next=null;
+		Node temp = head;
+		head = tail;
+		tail = temp;
+		tail.next = null;
 	}
-	
+
 	public boolean isPalindrome() {
-		IsPalindromeLeft=head;
+		IsPalindromeLeft = head;
 		return isPalindrome(head);
 	}
+
 	private Node IsPalindromeLeft;
-	public boolean isPalindrome(Node right) {
-		if(right == null) {
+
+	private boolean isPalindrome(Node right) {
+		if (right == null) {
 			return true;
 		}
-		boolean recRes=isPalindrome(right.next);
-		if(recRes == true) {
-			if(IsPalindromeLeft.data==right.data) {
-				IsPalindromeLeft=IsPalindromeLeft.next;
+		boolean recRes = isPalindrome(right.next);
+		if (recRes == true) {
+			if (IsPalindromeLeft.data == right.data) {
+				IsPalindromeLeft = IsPalindromeLeft.next;
 				return true;
-			}else {
+			} else {
 				return false;
 			}
-		}else {
+		} else {
 			return false;
 		}
+	}
+	
+	public void fold() {
+		foldLeft=head;
+		fold(head,0);
+	}
+	private Node foldLeft;
+	private void fold(Node right,int floor) {
+		if(right == null) {
+			return;
+		}
+		fold(right.next,floor + 1);
+		if(floor> size/2) {
+			Node temp=foldLeft.next;
+			foldLeft.next=right;
+			right.next=temp;
+			foldLeft=temp;
+		}
+		if(floor == size/2) {
+			tail=right;
+			tail.next=null;
+		}
+	}
+	public int mid() {
+		Node slow=head;
+		Node fast=head;
+		while(fast.next!=null && fast.next.next!=null) {
+			slow=slow.next;
+			fast=fast.next.next;
+		}
+		return slow.data;
 	}
 }
