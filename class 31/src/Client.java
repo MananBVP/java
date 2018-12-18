@@ -20,26 +20,33 @@ public class Client {
 //		list.addAt(1, 20);
 //		list.dispaly();
 		
-		list.addFirst(10);
-		list.dispaly();
-		list.addLast(20);
-		list.dispaly();
-		list.addLast(30);
-		list.dispaly();
-		list.addFirst(40);
-		list.dispaly();
-		list.addAt(2, 100);
-		list.dispaly();
-		System.out.println(list.removeAt(3));
-		list.dispaly();
+//		list.addFirst(10);
+//		list.dispaly();
+//		list.addLast(20);
+//		list.dispaly();
+//		list.addLast(30);
+//		list.dispaly();
+//		list.addFirst(40);
+//		list.dispaly();
+//		list.addAt(2, 100);
+//		list.dispaly();
+//		System.out.println(list.removeAt(3));
+//		list.dispaly();
 //		list.reverseDI();
 //		list.dispaly();
-		list.reversePI();
-		list.dispaly();
+//		list.reversePI();
+//		list.dispaly();
 //		while(!list.isEmpty()) {
 //			System.out.println(list.removeLast());
 //			list.dispaly();
 //		}
+		list.addFirst(10);
+		list.addFirst(20);
+		list.addFirst(30);
+		list.addFirst(30);
+		list.addFirst(20);
+		list.addFirst(10);
+		System.out.println(list.isPalindrome());
 	}
 
 }

@@ -162,7 +162,7 @@ public class Linked_List {
 		System.out.println(".");
 	}
 
-	public void reverseDI() { // Reverse Data Iterative
+	public void reverseDI() { // Reverse Data Iterative O(n^2)
 		int l = 0;
 		int r = size - 1;
 		while (l < r) {
@@ -176,7 +176,7 @@ public class Linked_List {
 		}
 	}
 
-	public void reversePI() { // Reverse Pointer Iterative
+	public void reversePI() { // Reverse Pointer Iterative O(n)
 		if(size==1) {
 			return;
 		}
@@ -195,5 +195,27 @@ public class Linked_List {
 		head=tail;
 		tail=temp;
 		tail.next=null;
+	}
+	
+	public boolean isPalindrome() {
+		IsPalindromeLeft=head;
+		return isPalindrome(head);
+	}
+	private Node IsPalindromeLeft;
+	public boolean isPalindrome(Node right) {
+		if(right == null) {
+			return true;
+		}
+		boolean recRes=isPalindrome(right.next);
+		if(recRes == true) {
+			if(IsPalindromeLeft.data==right.data) {
+				IsPalindromeLeft=IsPalindromeLeft.next;
+				return true;
+			}else {
+				return false;
+			}
+		}else {
+			return false;
+		}
 	}
 }
