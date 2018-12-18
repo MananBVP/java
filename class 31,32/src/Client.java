@@ -51,6 +51,7 @@ public class Client {
 //		list.fold();
 //		list.dispaly();
 		System.out.println(list.mid());
+		System.out.println(list.kthFromLast(1));
 //		list.dispaly();
 	}
 
