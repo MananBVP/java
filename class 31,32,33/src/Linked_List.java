@@ -415,4 +415,30 @@ public class Linked_List {
 		this.tail = newlist.tail;
 		this.size = newlist.size;
 	}
+	
+	public void oddEven() {
+		Linked_List odd = new Linked_List();
+		Linked_List even = new Linked_List();
+
+		while (this.size != 0) {
+			if(this.head.data %2 == 0) {
+				even.addLastNode(this.removeFirstNode());
+			}else {
+				odd.addFirstNode(this.removeFirstNode());
+			}
+		}
+			if(odd.head == null && even.head!=null) {
+				this.head=odd.head;
+				this.tail=odd.tail;
+			}else if(even.head == null && odd.head!=null) {
+				this.head=even.head;
+				this.tail=even.tail;
+			}else {
+				this.head=odd.head;
+				odd.tail.next=even.head;
+				odd.tail=even.tail;
+				this.tail=odd.tail;
+			}
+		
+	}
 }

@@ -61,8 +61,8 @@ public class Client {
 		l1.addLast(20);
 		l1.addLast(25);
 		l1.addLast(30);
-		l1.addLast(30);
-		l1.addLast(35);
+//		l1.addLast(30);
+//		l1.addLast(35);
 		l1.addLast(35);
 
 		
@@ -78,7 +78,8 @@ public class Client {
 //		new1.dispaly();
 //		l1.kReverse(3);
 		l1.dispaly();
-		l1.removeDuplicates();
+//		l1.removeDuplicates();
+		l1.oddEven();
 		l1.dispaly();
 		
 		
