@@ -73,6 +73,8 @@ public class Client {
 		
 		Linked_List new1=Linked_List.mergesort(l1);
 		new1.dispaly();
+		l1.kReverse(3);
+		l1.dispaly();
 		
 	}
 

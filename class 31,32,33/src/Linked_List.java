@@ -50,6 +50,17 @@ public class Linked_List {
 		size++;
 	}
 
+	private void addFirstNode(Node node) { // O(1)
+		if (size == 0) {
+			head = node;
+			tail = node;
+		} else {
+			node.next = head;
+			head = node;
+		}
+		size++;
+	}
+
 	public void addLast(int data) { // O(1)
 		Node node = new Node();
 		node.data = data;
@@ -96,6 +107,24 @@ public class Linked_List {
 			size--;
 		}
 		return node.data;
+	}
+
+	private Node removeFirstNode() { // O(1)
+		Node node;
+		if (size == 0) {
+			return null;
+		} else if (size == 1) {
+			node = head;
+			head = tail = null;
+			size--;
+			return node;
+		} else {
+			node = head;
+			head = head.next;
+			node.next = null;
+			size--;
+		}
+		return node;
 	}
 
 	public int removeLast() { // O(n)
@@ -330,5 +359,28 @@ public class Linked_List {
 		Linked_List sorted = mergeTwoSortedLists(left, right);
 		mid.next = midn;
 		return sorted;
+	}
+
+	public void kReverse(int k) {
+		Linked_List prev = new Linked_List();
+		Linked_List curr = null;
+		while (this.size != 0) {
+			for (int i = 0; i < k && this.size!=0; i++) {
+				prev.addFirstNode(this.removeFirstNode());
+			}
+			if (curr == null) {
+				curr = prev;
+			} else {
+				curr.tail.next = prev.head;
+				curr.tail = prev.head;
+				curr.size += prev.size;
+			}
+
+			prev = new Linked_List();
+
+		}
+		this.head = curr.head;
+		this.tail = curr.tail;
+		this.size = curr.size;
 	}
 }
