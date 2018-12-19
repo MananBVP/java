@@ -61,7 +61,10 @@ public class Client {
 		l1.addLast(20);
 		l1.addLast(25);
 		l1.addLast(30);
+		l1.addLast(30);
 		l1.addLast(35);
+		l1.addLast(35);
+
 		
 		l2.addLast(12);
 		l2.addLast(45);
@@ -71,10 +74,13 @@ public class Client {
 //		Linked_List newlist=new Linked_List().mergeTwoSortedLists(l1, l2);
 //		newlist.dispaly();
 		
-		Linked_List new1=Linked_List.mergesort(l1);
-		new1.dispaly();
-		l1.kReverse(3);
+//		Linked_List new1=Linked_List.mergesort(l1);
+//		new1.dispaly();
+//		l1.kReverse(3);
 		l1.dispaly();
+		l1.removeDuplicates();
+		l1.dispaly();
+		
 		
 	}
 

@@ -74,6 +74,17 @@ public class Linked_List {
 		size++;
 	}
 
+	private void addLastNode(Node node) { // O(1)
+		if (size == 0) {
+			head = node;
+			tail = node;
+		} else {
+			tail.next = node;
+			tail = node;
+		}
+		size++;
+	}
+
 	public void addAt(int idx, int data) { // O(n)
 		if (idx < 0 || idx > size) {
 			System.out.println("Index Out of Bound");
@@ -365,7 +376,7 @@ public class Linked_List {
 		Linked_List prev = new Linked_List();
 		Linked_List curr = null;
 		while (this.size != 0) {
-			for (int i = 0; i < k && this.size!=0; i++) {
+			for (int i = 0; i < k && this.size != 0; i++) {
 				prev.addFirstNode(this.removeFirstNode());
 			}
 			if (curr == null) {
@@ -382,5 +393,26 @@ public class Linked_List {
 		this.head = curr.head;
 		this.tail = curr.tail;
 		this.size = curr.size;
+	}
+
+	public void removeDuplicates() {
+		Linked_List newlist = new Linked_List();
+
+		while (this.size != 0) {
+			if (newlist.head == null) {
+				newlist.addLastNode(this.removeFirstNode());
+			} else {
+				if (newlist.tail.data == this.head.data) {
+//					this.head = head.next;
+//					this.size--;
+					this.removeFirstNode();
+				} else {
+					newlist.addLastNode(this.removeFirstNode());
+				}
+			}
+		}
+		this.head = newlist.head;
+		this.tail = newlist.tail;
+		this.size = newlist.size;
 	}
 }
