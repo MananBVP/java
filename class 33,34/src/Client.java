@@ -12,7 +12,9 @@ public class Client {
 //		System.out.println(gt.find(105));
 //		System.out.println(gt.nodeToRootPath(110));
 		System.out.println("------------------");
-		gt.removeCurrentLeaves();
+//		gt.removeCurrentLeaves();
+//		gt.display();
+		gt.mirror();
 		gt.display();
 	}
 

@@ -1,4 +1,6 @@
+import java.text.spi.CollatorProvider;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Stack;
 
 public class Generic_trees {
@@ -141,6 +143,16 @@ public class Generic_trees {
 			}else {
 				node.children.remove(child);
 			}
+		}
+	}
+	public void mirror() {
+		mirror(root);
+	}
+	
+	private void mirror(Node node) {
+		Collections.reverse(node.children);
+		for(Node child:node.children) {
+			mirror(child);
 		}
 	}
 }
