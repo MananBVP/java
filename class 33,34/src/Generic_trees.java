@@ -68,8 +68,9 @@ public class Generic_trees {
 //		if(node.children.size() == 0) {
 //			return node.data;
 //		}
-		int m=node.data;
+		int m = node.data;
 //		int m = Integer.MIN_VALUE;
+
 		for (Node child : node.children) {
 			int a = max(child);
 			m = Math.max(a, m);
@@ -82,10 +83,11 @@ public class Generic_trees {
 	}
 
 	private int height(Node node) {
-		int m=0;
-		for(Node child:node.children) {
-			int a=height(child);
-			m=Math.max(a, m);
+		int m = 0;
+
+		for (Node child : node.children) {
+			int a = height(child);
+			m = Math.max(a, m);
 		}
 		return m + 1;
 	}
@@ -95,15 +97,35 @@ public class Generic_trees {
 	}
 
 	private boolean find(Node node, int data) {
-		if(node.data == data) {
+		if (node.data == data) {
 			return true;
 		}
-		
-		for(Node child:node.children) {
-			if(find(child, data) == true) {
+
+		for (Node child : node.children) {
+			if (find(child, data) == true) {
 				return true;
 			}
 		}
 		return false;
+	}
+
+	public ArrayList<Integer> nodeToRootPath(int data) {
+		return nodeToRootPath(root, data);
+	}
+
+	private ArrayList<Integer> nodeToRootPath(Node node, int data) {
+		ArrayList<Integer> a = new ArrayList<>();
+		if (node.data == data) {
+			a.add(node.data);
+			return a;
+		}
+		for (Node child : node.children) {
+			a = nodeToRootPath(child, data);
+			if (a.size() > 0) {
+				a.add(node.data);
+				return a;
+			}
+		}
+		return a;
 	}
 }
