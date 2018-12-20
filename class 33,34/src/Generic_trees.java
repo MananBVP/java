@@ -56,7 +56,7 @@ public class Generic_trees {
 		for (Node child : node.children) {
 			s += size2(child);
 		}
-		s++;
+		s++; // for the node itself
 		return s;
 	}
 
@@ -65,10 +65,11 @@ public class Generic_trees {
 	}
 
 	private int max(Node node) {
-		if(node.children.size() == 0) {
-			return node.data;
-		}
-		int m = Integer.MIN_VALUE;
+//		if(node.children.size() == 0) {
+//			return node.data;
+//		}
+		int m=node.data;
+//		int m = Integer.MIN_VALUE;
 		for (Node child : node.children) {
 			int a = max(child);
 			m = Math.max(a, m);
