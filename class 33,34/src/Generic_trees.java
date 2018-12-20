@@ -13,7 +13,7 @@ public class Generic_trees {
 	public Generic_trees(int[] arr) {
 		Stack<Node> stack = new Stack<>();
 
-		for (int i = 0; i < stack.size(); i++) {
+		for (int i = 0; i < arr.length; i++) {
 			if (arr[i] == -1) {
 				stack.pop();
 			} else {
@@ -27,6 +27,23 @@ public class Generic_trees {
 				}
 				stack.push(node);
 			}
+		}
+	}
+
+	public void display() {
+		display(root);
+	}
+
+	private void display(Node node) {
+		String s = node.data + " -> ";
+		for (Node child : node.children) {
+			s += child.data + ",";
+		}
+		s += ".";
+		System.out.println(s);
+
+		for (Node child : node.children) {
+			display(child);
 		}
 	}
 }
