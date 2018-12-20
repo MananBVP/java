@@ -236,6 +236,24 @@ public class Linked_List {
 		tail = temp;
 		tail.next = null;
 	}
+	
+	public void reverseDataRecursive() {
+		reverseleft=this.head;
+		reverseDataRecursive(this.head, 0);
+	}
+	private Node reverseleft;
+	private void reverseDataRecursive(Node right,int count) {
+		if(right == null) {
+			return;
+		}
+		reverseDataRecursive(right.next, count+1);
+		if(count>= size/2) {
+			int temp=right.data;
+			right.data=reverseleft.data;
+			reverseleft.data=temp;
+			reverseleft=reverseleft.next;
+		}
+	}
 
 	public boolean isPalindrome() {
 		IsPalindromeLeft = head;
@@ -415,30 +433,47 @@ public class Linked_List {
 		this.tail = newlist.tail;
 		this.size = newlist.size;
 	}
-	
+
 	public void oddEven() {
 		Linked_List odd = new Linked_List();
 		Linked_List even = new Linked_List();
 
 		while (this.size != 0) {
-			if(this.head.data %2 == 0) {
+			if (this.head.data % 2 == 0) {
 				even.addLastNode(this.removeFirstNode());
-			}else {
+			} else {
 				odd.addFirstNode(this.removeFirstNode());
 			}
 		}
-			if(odd.head == null && even.head!=null) {
-				this.head=odd.head;
-				this.tail=odd.tail;
-			}else if(even.head == null && odd.head!=null) {
-				this.head=even.head;
-				this.tail=even.tail;
-			}else {
-				this.head=odd.head;
-				odd.tail.next=even.head;
-				odd.tail=even.tail;
-				this.tail=odd.tail;
-			}
+		if (odd.head == null && even.head != null) {
+			this.head = odd.head;
+			this.tail = odd.tail;
+			this.size=odd.size;
+		} else if (even.head == null && odd.head != null) {
+			this.head = even.head;
+			this.tail = even.tail;
+			this.size=even.size;
+		} else {
+			this.head = odd.head;
+			odd.tail.next = even.head;
+			odd.tail = even.tail;
+			this.tail = odd.tail;
+			this.size=odd.size+even.size;
+		}
+
+	}
+	
+	public static int findMergeNode(Linked_List l1,Linked_List l2) {
+		Node n1=l1.head;
+		Node n2=l2.head;
 		
+		while(l1.head!=null && l2.head!=null) {
+			if(n1 == n2) {
+				return n1.data;
+			}
+			n1=n1.next;
+			n2=n2.next;
+		}
+		return -1;
 	}
 }

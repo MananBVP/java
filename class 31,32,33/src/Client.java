@@ -79,7 +79,8 @@ public class Client {
 //		l1.kReverse(3);
 		l1.dispaly();
 //		l1.removeDuplicates();
-		l1.oddEven();
+//		l1.oddEven();
+		l1.reverseDataRecursive();
 		l1.dispaly();
 		
 		
