@@ -8,6 +8,7 @@ public class Client {
 		System.out.println(gt.size2());
 		System.out.println(gt.max());
 		System.out.println(gt.height());
+		System.out.println(gt.find(10));
 	}
 
 }
