@@ -82,10 +82,12 @@ public class Generic_trees {
 	}
 
 	private int height(Node node) {
+		int m=0;
 		for(Node child:node.children) {
-			int a=height(child)+1;
-			
+			int a=height(child);
+			m=Math.max(a, m);
 		}
+		return m + 1;
 	}
 
 	public boolean find(int data) {
