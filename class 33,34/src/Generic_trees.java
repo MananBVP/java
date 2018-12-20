@@ -46,4 +46,52 @@ public class Generic_trees {
 			display(child);
 		}
 	}
+
+	public int size2() {
+		return size2(root);
+	}
+
+	private int size2(Node node) {
+		int s = 0;
+		for (Node child : node.children) {
+			s += size2(child);
+		}
+		s++;
+		return s;
+	}
+
+	public int max() {
+		return max(root);
+	}
+
+	private int max(Node node) {
+		if(node.children.size() == 0) {
+			return node.data;
+		}
+		int m = Integer.MIN_VALUE;
+		for (Node child : node.children) {
+			int a = max(child);
+			m = Math.max(a, m);
+		}
+		return m;
+	}
+
+	public int height() {
+		return height(root);
+	}
+
+	private int height(Node node) {
+		for(Node child:node.children) {
+			int a=height(child)+1;
+			
+		}
+	}
+
+	public boolean find(int data) {
+
+	}
+
+	private boolean find(Node node, int data) {
+
+	}
 }
