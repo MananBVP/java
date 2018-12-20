@@ -128,4 +128,19 @@ public class Generic_trees {
 		}
 		return a;
 	}
+
+	public void removeCurrentLeaves() {
+		removeCurrentLeaves(root);
+	}
+
+	private void removeCurrentLeaves(Node node) {
+		for (int i = node.children.size() - 1; i >= 0; i--) {
+			Node child = node.children.get(i);
+			if (child.children.size() > 0) {
+				removeCurrentLeaves(child);
+			}else {
+				node.children.remove(child);
+			}
+		}
+	}
 }
