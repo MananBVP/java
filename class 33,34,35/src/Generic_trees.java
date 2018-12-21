@@ -293,7 +293,7 @@ public class Generic_trees {
 	public void multiSolver2(int data) {
 		floor = null;
 		ceil = null;
-		multiSolver2(root, data,false);
+		multiSolver2(root, data);
 		System.out.println("Floor = " + floor);
 		System.out.println("Ceil = " + ceil);
 		System.out.println("Predecessor = "+predecessor);
@@ -307,7 +307,7 @@ public class Generic_trees {
 	private Integer ceil = null;
 	private Integer floor = null;
 
-	private void multiSolver2(Node node, int data,boolean flag) {
+	private void multiSolver2(Node node, int data) {
 		prev = curr;
 		curr = node.data;
 		
@@ -329,7 +329,7 @@ public class Generic_trees {
 		
 		
 		for (Node child : node.children) {
-			multiSolver2(child, data,flag);
+			multiSolver2(child, data);
 		}
 	}
 }

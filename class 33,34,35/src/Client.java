@@ -23,7 +23,7 @@ public class Client {
 //		gt.display();
 //		System.out.println(gt.areSimilarShape(gt, gt2));
 //		gt.multiSolver();
-		gt.multiSolver2(60);
+		gt.multiSolver2(90);
 //		gt.multiSolver2(5);
 		
 		
