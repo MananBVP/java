@@ -151,8 +151,21 @@ public class Generic_trees {
 	
 	private void mirror(Node node) {
 		Collections.reverse(node.children);
+		
 		for(Node child:node.children) {
 			mirror(child);
 		}
+		
+		 /*int left=0;
+		 int right=node.children.size() -1;
+		 while(left<right) {
+			 Node leftnode =node .children.get(left);
+			 Node rightnode =node .children.get(right);
+			node.children.set(left, rightnode);
+			node.children.set(right, leftnode);
+			left++;
+		   right--;
+		 }
+		 */
 	}
 }
