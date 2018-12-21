@@ -21,7 +21,9 @@ public class Client {
 //		gt.display();
 //		gt.linearize_2();
 //		gt.display();
-		System.out.println(gt.areSimilarShape(gt, gt2));
+//		System.out.println(gt.areSimilarShape(gt, gt2));
+		gt.multiSolver();
+		
 		
 	}
 

@@ -254,8 +254,35 @@ public class Generic_trees {
 		return true;
 	}
 
-	
 	public boolean isSymmetric() {
 		return Generic_trees.areMirrorImages(this, this);
+	}
+	
+	public void multiSolver() {
+		msSize=0;
+		msMin=Integer.MAX_VALUE;
+	    msMax=Integer.MIN_VALUE;
+	    msHeight=0;
+		multiSolver(root, 0);
+		
+		System.out.println("Size = "+msSize);
+		System.out.println("Max = "+msMax);
+		System.out.println("Min = "+msMin);
+		System.out.println("Height = "+msHeight);
+	}
+	private int msSize=0;
+	private int msMin=Integer.MAX_VALUE;
+	private int msMax=Integer.MIN_VALUE;
+	private int msHeight=0;
+	
+	private void multiSolver(Node node , int depth) {
+		msSize++;
+		msMin=Math.min(msMin, node.data);
+		msMax=Math.max(msMax, node.data);
+		msHeight=Math.max(msHeight, depth);
+		
+		for(Node child : node.children) {
+			multiSolver(child, depth+1);
+		}
 	}
 }
