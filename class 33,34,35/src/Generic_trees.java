@@ -140,56 +140,71 @@ public class Generic_trees {
 			Node child = node.children.get(i);
 			if (child.children.size() > 0) {
 				removeCurrentLeaves(child);
-			}else {
+			} else {
 				node.children.remove(child);
 			}
 		}
 	}
+
 	public void mirror() {
 		mirror(root);
 	}
-	
+
 	private void mirror(Node node) {
 		Collections.reverse(node.children);
-		
-		for(Node child:node.children) {
+
+		for (Node child : node.children) {
 			mirror(child);
 		}
-		
-		 /*int left=0;
-		 int right=node.children.size() -1;
-		 while(left<right) {
-			 Node leftnode =node .children.get(left);
-			 Node rightnode =node .children.get(right);
-			node.children.set(left, rightnode);
-			node.children.set(right, leftnode);
-			left++;
-		   right--;
-		 }
+
+		/*
+		 * int left=0; int right=node.children.size() -1; while(left<right) { Node
+		 * leftnode =node .children.get(left); Node rightnode =node
+		 * .children.get(right); node.children.set(left, rightnode);
+		 * node.children.set(right, leftnode); left++; right--; }
 		 */
 	}
-	
+
 	public void linearize() {
 		linearize(root);
 	}
-	
+
 	private void linearize(Node node) {
-		for(Node child : node.children) {
+		for (Node child : node.children) {
 			linearize(child);
 		}
-		
-		for(int i=node.children.size() - 1; i>0 ;i--) {
-			Node lr=node.children.remove(i);
-			Node sl=node.children.get(i-1);
-			Node tail=getTail(sl);
+
+		for (int i = node.children.size() - 1; i > 0; i--) {
+			Node lr = node.children.remove(i);
+			Node sl = node.children.get(i - 1);
+			Node tail = getTail(sl);
 			tail.children.add(lr);
 		}
 	}
 
 	private Node getTail(Node node) {
-		while(node.children.size() !=0) {
-			node=node.children.get(0);
+		while (node.children.size() != 0) {
+			node = node.children.get(0);
 		}
 		return node;
+	}
+	public void linearize_2() {
+		linearize(root);
+	}
+	
+	//linearizes and returns tail
+	private Node linearize_2(Node node) {
+		if(node.children.size() == 0) {
+			return node;
+		}
+		
+		Node lnodeT=linearize_2(node.children.get(node.children.size() - 1));
+		while(node.children.size() > 1) {
+			Node lr = node.children.remove(node.children.size() - 1);
+			Node sl = node.children.get(node.children.size() - 1);
+			Node sltail=linearize_2(sl);
+			sltail.children.add(lr);
+		}
+		return lnodeT;
 	}
 }
