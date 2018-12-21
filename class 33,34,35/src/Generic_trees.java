@@ -296,8 +296,8 @@ public class Generic_trees {
 		multiSolver2(root, data);
 		System.out.println("Floor = " + floor);
 		System.out.println("Ceil = " + ceil);
-		System.out.println("Predecessor = "+predecessor);
-		System.out.println("Successor = "+successor);
+		System.out.println("Predecessor = " + predecessor);
+		System.out.println("Successor = " + successor);
 	}
 
 	private Integer predecessor = null;
@@ -310,26 +310,55 @@ public class Generic_trees {
 	private void multiSolver2(Node node, int data) {
 		prev = curr;
 		curr = node.data;
-		
-		if(curr == data) {
+
+		if (curr == data) {
 			predecessor = prev;
 		}
-		
-		if(prev != null && prev == data) {
+
+		if (prev != null && prev == data) {
 			successor = curr;
 		}
-		
+
 		if (node.data < data) {
-		 	floor = floor == null ? node.data : Math.max(floor, node.data);
+			floor = floor == null ? node.data : Math.max(floor, node.data);
 		}
-		
+
 		if (node.data > data) {
 			ceil = ceil == null ? node.data : Math.min(ceil, node.data);
 		}
-		
-		
+
 		for (Node child : node.children) {
 			multiSolver2(child, data);
+		}
+	}
+
+	public void multiSolver3(int data) {
+		ms3flag = 0;
+		multiSolver3(root, data);
+		System.out.println("Predecessor = " + pred);
+		System.out.println("Successor = " + succ);
+	}
+
+	private Integer pred = null;
+	private Integer succ = null;
+	private Integer ms3flag = 0;
+
+	private void multiSolver3(Node node, int data) {
+		if (node.data == data) {
+			ms3flag++;
+		}
+		if (ms3flag == 0) {
+			pred = node.data;
+		} else if (ms3flag == 1) {
+			ms3flag++;
+		} else if (ms3flag == 2) {
+			succ = node.data;
+			ms3flag++;
+		}else {
+			return;
+		}
+		for (Node child : node.children) {
+			multiSolver3(child, data);
 		}
 	}
 }
