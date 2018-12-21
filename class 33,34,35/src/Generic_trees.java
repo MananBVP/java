@@ -188,23 +188,43 @@ public class Generic_trees {
 		}
 		return node;
 	}
+
 	public void linearize_2() {
 		linearize(root);
 	}
-	
-	//linearizes and returns tail
+
+	// linearizes and returns tail
 	private Node linearize_2(Node node) {
-		if(node.children.size() == 0) {
+		if (node.children.size() == 0) {
 			return node;
 		}
-		
-		Node lnodeT=linearize_2(node.children.get(node.children.size() - 1));
-		while(node.children.size() > 1) {
+
+		Node lnodeTail = linearize_2(node.children.get(node.children.size() - 1));
+		while (node.children.size() > 1) {
 			Node lr = node.children.remove(node.children.size() - 1);
 			Node sl = node.children.get(node.children.size() - 1);
-			Node sltail=linearize_2(sl);
+			Node sltail = linearize_2(sl);
 			sltail.children.add(lr);
 		}
-		return lnodeT;
+		return lnodeTail;
+	}
+
+	public static boolean areSimilarShape(Generic_trees gt1, Generic_trees gt2) {
+		return areSimilarShape(gt1.root, gt2.root);
+	}
+
+	private static boolean areSimilarShape(Node n1, Node n2) {
+		if (n1.children.size() == n2.children.size()) {
+			for (int i = 0; i < n1.children.size() - 1; i++) {
+				boolean a=areSimilarShape(n1.children.get(i), n2.children.get(i));
+				if(a == false) {
+					return false;
+				}
+				return a;
+			}
+		} else {
+			return false;
+		}
+		return true;
 	}
 }
