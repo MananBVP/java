@@ -216,14 +216,40 @@ public class Generic_trees {
 	private static boolean areSimilarShape(Node n1, Node n2) {
 		if (n1.children.size() == n2.children.size()) {
 			for (int i = 0; i < n1.children.size() - 1; i++) {
-				boolean a=areSimilarShape(n1.children.get(i), n2.children.get(i));
-				if(a == false) {
+				boolean a = areSimilarShape(n1.children.get(i), n2.children.get(i));
+				if (a == false) {
 					return false;
 				}
 				return a;
 			}
 		} else {
 			return false;
+		}
+		return true;
+	}
+
+	public static boolean areMirrorImages(Generic_trees gt1, Generic_trees gt2) {
+		return areMirrorImages(gt1.root, gt2.root);
+	}
+
+	private static boolean areMirrorImages(Node n1, Node n2) {
+		if (n1.children.size() != n2.children.size()) {
+			return false;
+		}
+
+		int left = 0;
+		int right = n1.children.size() - 1;
+		while (left < n1.children.size()) {
+			Node lc = n1.children.get(left);
+			Node rc = n1.children.get(right);
+
+			boolean aremi = areMirrorImages(lc, rc);
+			if (aremi == false) {
+				return false;
+			}
+			
+			left++;
+			right--;
 		}
 		return true;
 	}
