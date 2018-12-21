@@ -254,35 +254,82 @@ public class Generic_trees {
 		return true;
 	}
 
+	// is foldable
 	public boolean isSymmetric() {
 		return Generic_trees.areMirrorImages(this, this);
 	}
-	
+
+	// size,min,max,height
 	public void multiSolver() {
-		msSize=0;
-		msMin=Integer.MAX_VALUE;
-	    msMax=Integer.MIN_VALUE;
-	    msHeight=0;
+		msSize = 0;
+		msMin = Integer.MAX_VALUE;
+		msMax = Integer.MIN_VALUE;
+		msHeight = 0;
 		multiSolver(root, 0);
-		
-		System.out.println("Size = "+msSize);
-		System.out.println("Max = "+msMax);
-		System.out.println("Min = "+msMin);
-		System.out.println("Height = "+msHeight);
+
+		System.out.println("Size = " + msSize);
+		System.out.println("Max = " + msMax);
+		System.out.println("Min = " + msMin);
+		System.out.println("Height = " + msHeight);
 	}
-	private int msSize=0;
-	private int msMin=Integer.MAX_VALUE;
-	private int msMax=Integer.MIN_VALUE;
-	private int msHeight=0;
-	
-	private void multiSolver(Node node , int depth) {
+
+	private int msSize = 0;
+	private int msMin = Integer.MAX_VALUE;
+	private int msMax = Integer.MIN_VALUE;
+	private int msHeight = 0;
+
+	private void multiSolver(Node node, int depth) {
 		msSize++;
-		msMin=Math.min(msMin, node.data);
-		msMax=Math.max(msMax, node.data);
-		msHeight=Math.max(msHeight, depth);
+		msMin = Math.min(msMin, node.data);
+		msMax = Math.max(msMax, node.data);
+		msHeight = Math.max(msHeight, depth);
+
+		for (Node child : node.children) {
+			multiSolver(child, depth + 1);
+		}
+	}
+
+	// pred,succ,ceil,floor
+	public void multiSolver2(int data) {
+		floor = null;
+		ceil = null;
+		multiSolver2(root, data,false);
+		System.out.println("Floor = " + floor);
+		System.out.println("Ceil = " + ceil);
+		System.out.println("Predecessor = "+predecessor);
+		System.out.println("Successor = "+successor);
+	}
+
+	private Integer predecessor = null;
+	private Integer successor = null;
+	private Integer prev = null;
+	private Integer curr = null;
+	private Integer ceil = null;
+	private Integer floor = null;
+
+	private void multiSolver2(Node node, int data,boolean flag) {
+		prev = curr;
+		curr = node.data;
 		
-		for(Node child : node.children) {
-			multiSolver(child, depth+1);
+		if(curr == data) {
+			predecessor = prev;
+		}
+		
+		if(prev != null && prev == data) {
+			successor = curr;
+		}
+		
+		if (node.data < data) {
+		 	floor = floor == null ? node.data : Math.max(floor, node.data);
+		}
+		
+		if (node.data > data) {
+			ceil = ceil == null ? node.data : Math.min(ceil, node.data);
+		}
+		
+		
+		for (Node child : node.children) {
+			multiSolver2(child, data,flag);
 		}
 	}
 }
