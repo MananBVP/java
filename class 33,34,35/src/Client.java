@@ -14,7 +14,9 @@ public class Client {
 		System.out.println("------------------");
 //		gt.removeCurrentLeaves();
 //		gt.display();
-		gt.mirror();
+//		gt.mirror();
+//		gt.display();
+		gt.linearize();
 		gt.display();
 	}
 

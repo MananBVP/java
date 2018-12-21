@@ -168,4 +168,28 @@ public class Generic_trees {
 		 }
 		 */
 	}
+	
+	public void linearize() {
+		linearize(root);
+	}
+	
+	private void linearize(Node node) {
+		for(Node child : node.children) {
+			linearize(child);
+		}
+		
+		for(int i=node.children.size() - 1; i>0 ;i--) {
+			Node lr=node.children.remove(i);
+			Node sl=node.children.get(i-1);
+			Node tail=getTail(sl);
+			tail.children.add(lr);
+		}
+	}
+
+	private Node getTail(Node node) {
+		while(node.children.size() !=0) {
+			node=node.children.get(0);
+		}
+		return node;
+	}
 }
