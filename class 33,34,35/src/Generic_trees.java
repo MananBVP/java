@@ -247,10 +247,15 @@ public class Generic_trees {
 			if (aremi == false) {
 				return false;
 			}
-			
+
 			left++;
 			right--;
 		}
 		return true;
+	}
+
+	
+	public boolean isSymmetric() {
+		return Generic_trees.areMirrorImages(this, this);
 	}
 }
