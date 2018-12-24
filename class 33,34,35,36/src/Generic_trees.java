@@ -452,10 +452,9 @@ public class Generic_trees {
 	}
 	
 	public void level_OrderLineWise3() {
-		int cl=0,nl=0;
+		int cl=1,nl=0;
 		LinkedList<Node> queue = new LinkedList<>();
 		queue.addLast(root);
-		cl=1;
 		
 		while (queue.size() > 0) {
 			Node temp = queue.removeFirst();
