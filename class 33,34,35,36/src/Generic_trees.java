@@ -355,52 +355,100 @@ public class Generic_trees {
 		} else if (ms3flag == 2) {
 			succ = node.data;
 			ms3flag++;
-		}else {
+		} else {
 			return;
 		}
 		for (Node child : node.children) {
 			multiSolver3(child, data);
 		}
 	}
-	
+
 	public void level_Order() {
 		LinkedList<Node> queue = new LinkedList<>();
 		queue.addLast(root);
-		
-		while(queue.size() > 0) {
+
+		while (queue.size() > 0) {
 			Node temp = queue.removeFirst();
-			System.out.print(temp.data+" ");
-			for(Node child : temp.children) {
+			System.out.print(temp.data + " ");
+			for (Node child : temp.children) {
 				queue.addLast(child);
 			}
 		}
 		System.out.print(".");
 	}
-	
-	private class pair{
+
+	private class pair {
 		int level;
 		Node nd;
+
+		pair(Node nd, int level) {
+			this.nd = nd;
+			this.level = level;
+		}
 	}
-	
+
+//	public void level_OrderLineWise1() {
+//		LinkedList<pair> queue = new LinkedList<>();
+//		pair p = new pair(root, 0);
+//		queue.addLast(p);
+//		
+//		while(queue.size() > 0) {
+//			
+//			if(rm == null) {
+//				System.out.println();
+//				if(queue.size() > 0) {
+//					queue.addLast(null);
+//				}
+//				continue;
+//			}
+//			System.out.print(rm.data+" ");
+//			for(Node child : rm.children) {
+//				queue.addLast(child);
+//			}
+//		}
+//	}
+
 	public void level_OrderLineWise() {
 		LinkedList<Node> queue = new LinkedList<>();
 		queue.addLast(root);
 		queue.addLast(null);
-		
-		while(queue.size() > 0) {
+
+		while (queue.size() > 0) {
 			Node rm = queue.removeFirst();
-			
-			if(rm == null) {
+
+			if (rm == null) {
 				System.out.println();
-				if(queue.size() > 0) {
+				if (queue.size() > 0) {
 					queue.addLast(null);
 				}
 				continue;
 			}
-			System.out.print(rm.data+" ");
-			for(Node child : rm.children) {
+			System.out.print(rm.data + " ");
+			for (Node child : rm.children) {
 				queue.addLast(child);
 			}
+		}
+	}
+
+	public void level_OrderLineWise2() {
+		LinkedList<Node> current_level = new LinkedList<>();
+		LinkedList<Node> next_level = new LinkedList<>();
+
+		current_level.addLast(root);
+
+		while (current_level.size() > 0) {
+			Node temp = current_level.removeFirst();
+			System.out.print(temp.data + " ");
+			
+			for (Node child : temp.children) {
+				next_level.addLast(child);
+			}
+			if (current_level.size() == 0) {
+				System.out.println();
+				current_level = next_level;
+				next_level = new LinkedList<>();
+			}
+
 		}
 	}
 }
