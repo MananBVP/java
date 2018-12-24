@@ -24,8 +24,8 @@ public class Client {
 //		System.out.println(gt.areSimilarShape(gt, gt2));
 //		gt.multiSolver();
 //		gt.multiSolver2(5);
-		gt.multiSolver3(90);
-		
+//		gt.multiSolver3(90);
+		gt.level_Order();
 		
 	}
 

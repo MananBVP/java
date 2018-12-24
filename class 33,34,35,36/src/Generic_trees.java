@@ -1,6 +1,7 @@
 import java.text.spi.CollatorProvider;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.Stack;
 
 public class Generic_trees {
@@ -360,5 +361,19 @@ public class Generic_trees {
 		for (Node child : node.children) {
 			multiSolver3(child, data);
 		}
+	}
+	
+	public void level_Order() {
+		LinkedList<Node> queue = new LinkedList<>();
+		queue.addLast(root);
+		
+		while(queue.size() > 0) {
+			Node temp = queue.removeFirst();
+			System.out.print(temp.data+" ");
+			for(Node child : temp.children) {
+				queue.addLast(child);
+			}
+		}
+		System.out.println(".");
 	}
 }
