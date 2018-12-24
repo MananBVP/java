@@ -1,5 +1,6 @@
 import java.util.Stack;
 
+
 public class Binary_Trees {
 	
 	private class Node{
@@ -50,5 +51,49 @@ public class Binary_Trees {
 		System.out.println(str);
 		display(node.left);
 		display(node.right);
+	}
+	
+	public int size2() {
+		return size2(root);
+	}
+	
+	private int size2(Node node) {
+		if(node == null) {
+			return 0;
+		}
+		int s = 0;
+		int left = size2(node.left);
+		int right = size2(node.right);
+		return left + right + 1;
+	}
+	
+	public int max() {
+		return max(root);
+	}
+	
+	private int max(Node node) {
+		if(node == null) {
+			return Integer.MIN_VALUE;
+		}
+		int left = max(node.left);
+		int right = max(node.right);
+		int child_max = Math.max(left, right);
+		
+		return Math.max(node.data, child_max);
+	}
+	
+	public int min() {
+		return min(root);
+	}
+	
+	private int min(Node node) {
+		if(node == null) {
+			return Integer.MAX_VALUE;
+		}
+		int left = min(node.left);
+		int right = min(node.right);
+		int child_max = Math.min(left, right);
+		
+		return Math.min(node.data, child_max);
 	}
 }
