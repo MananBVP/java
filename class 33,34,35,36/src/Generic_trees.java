@@ -477,8 +477,8 @@ public class Generic_trees {
 		LinkedList<Node> curr_level_queue = new LinkedList<>();
 		LinkedList<Node> next_level_stack = new LinkedList<>();
 		curr_level_queue.addLast(root);
-		
 		int level = 1;  // odds mean left to right
+		
 		while(curr_level_queue.size() > 0) {
 			Node rem = curr_level_queue.removeFirst();
 			System.out.print(rem.data+" ");
