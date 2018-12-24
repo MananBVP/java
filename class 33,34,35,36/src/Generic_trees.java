@@ -472,4 +472,33 @@ public class Generic_trees {
 			}
 		}
 	}
+	
+	public void level_OrderLineWise_zigZag() {
+		LinkedList<Node> curr_level_queue = new LinkedList<>();
+		LinkedList<Node> next_level_stack = new LinkedList<>();
+		curr_level_queue.addLast(root);
+		
+		int level = 1;  // odds mean left to right
+		while(curr_level_queue.size() > 0) {
+			Node rem = curr_level_queue.removeFirst();
+			System.out.print(rem.data+" ");
+			
+			if(level % 2 == 1) {  //L to R
+				for(int i=0;i<rem.children.size();i++) {
+					next_level_stack.addFirst(rem.children.get(i));
+				}
+			}else {
+				for(int i=rem.children.size()- 1;i >= 0;i--) { //R to L
+					next_level_stack.push(rem.children.get(i));
+				}
+			}
+			
+			if(curr_level_queue.size() == 0) {
+				curr_level_queue = next_level_stack;
+				next_level_stack = new LinkedList<>();
+				System.out.println();
+				level++;
+			}
+		}
+	}
 }
