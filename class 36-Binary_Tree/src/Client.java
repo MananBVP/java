@@ -8,7 +8,8 @@ public class Client {
 //		System.out.println(bt.size2());
 //		System.out.println(bt.max());
 //		System.out.println(bt.min());
-		System.out.println(bt.height());
+//		System.out.println(bt.height());
+		System.out.println(bt.find(40));
 	}
 
 }
