@@ -7,7 +7,8 @@ public class Client {
 		bt.display();
 //		System.out.println(bt.size2());
 //		System.out.println(bt.max());
-		System.out.println(bt.min());
+//		System.out.println(bt.min());
+		System.out.println(bt.height());
 	}
 
 }

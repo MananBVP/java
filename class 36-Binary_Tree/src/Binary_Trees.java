@@ -92,8 +92,21 @@ public class Binary_Trees {
 		}
 		int left = min(node.left);
 		int right = min(node.right);
-		int child_max = Math.min(left, right);
+		int child_min = Math.min(left, right);
 		
-		return Math.min(node.data, child_max);
+		return Math.min(node.data, child_min);
+	}
+	
+	public int height() {
+		return height(root);
+	}
+	
+	private int height(Node node) {
+		if(node == null) {
+			return 0;  // 0 for nodes height and -1 for edges height
+		}
+		int left = height(node.left);
+		int right = height(node.right);
+		return Math.max(left, right) + 1;
 	}
 }
