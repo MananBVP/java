@@ -374,6 +374,33 @@ public class Generic_trees {
 				queue.addLast(child);
 			}
 		}
-		System.out.println(".");
+		System.out.print(".");
+	}
+	
+	private class pair{
+		int level;
+		Node nd;
+	}
+	
+	public void level_OrderLineWise() {
+		LinkedList<Node> queue = new LinkedList<>();
+		queue.addLast(root);
+		queue.addLast(null);
+		
+		while(queue.size() > 0) {
+			Node rm = queue.removeFirst();
+			
+			if(rm == null) {
+				System.out.println();
+				if(queue.size() > 0) {
+					queue.addLast(null);
+				}
+				continue;
+			}
+			System.out.print(rm.data+" ");
+			for(Node child : rm.children) {
+				queue.addLast(child);
+			}
+		}
 	}
 }
