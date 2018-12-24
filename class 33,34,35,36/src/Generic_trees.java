@@ -363,7 +363,7 @@ public class Generic_trees {
 		}
 	}
 
-	public void level_Order() {
+	public void level_Order() {    //BFS
 		LinkedList<Node> queue = new LinkedList<>();
 		queue.addLast(root);
 
@@ -439,7 +439,7 @@ public class Generic_trees {
 		while (current_level.size() > 0) {
 			Node temp = current_level.removeFirst();
 			System.out.print(temp.data + " ");
-			
+
 			for (Node child : temp.children) {
 				next_level.addLast(child);
 			}
@@ -448,7 +448,29 @@ public class Generic_trees {
 				current_level = next_level;
 				next_level = new LinkedList<>();
 			}
+		}
+	}
+	
+	public void level_OrderLineWise3() {
+		int cl=0,nl=0;
+		LinkedList<Node> queue = new LinkedList<>();
+		queue.addLast(root);
+		cl=1;
+		
+		while (queue.size() > 0) {
+			Node temp = queue.removeFirst();
+			cl--;
+			System.out.print(temp.data + " ");
 
+			for (Node child : temp.children) {
+				queue.addLast(child);
+				nl++;
+			}
+			if (cl == 0) {
+				System.out.println();
+				cl = nl;
+				nl = 0;
+			}
 		}
 	}
 }

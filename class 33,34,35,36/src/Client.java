@@ -27,7 +27,8 @@ public class Client {
 //		gt.multiSolver3(90);
 //		gt.level_Order();
 //		gt.level_OrderLineWise();
-		gt.level_OrderLineWise2();
+//		gt.level_OrderLineWise2();
+		gt.level_OrderLineWise3();
 		
 	}
 
