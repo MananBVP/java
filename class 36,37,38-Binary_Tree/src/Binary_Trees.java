@@ -211,4 +211,48 @@ public class Binary_Trees {
 		
 		return new ArrayList<>();
 	}
+	
+	private void printKDown() {
+		
+	}
+	
+	public void rootToNodePaths(int tar) {
+		rootToNodePaths(root, 0, " ", tar);
+	}
+	
+	private void rootToNodePaths(Node node , int asf , String psf , int tar) {
+		if(node == null) {
+			return;
+		}
+	}
+	
+	
+	//<-------------------class 38 ------------->
+	
+	
+	public Binary_Trees(int[] preO , int[] inO) {
+		root = construct(preO, 0, preO.length - 1, inO, 0, inO.length - 1);
+	}
+	
+	private Node construct(int[] preO ,int psi, int pei, int[] inO , int isi , int iei) {
+		if(isi > iei && psi > pei) {
+			return null;
+		}
+		Node node = new Node();
+		node.data = preO[psi];
+		
+		int idx = -1;
+		
+		for(int i=0;i<=iei;i++) {
+			if(inO[i] == node.data) {
+				idx = i;
+				break;
+			}
+		}
+		
+		int lhs = idx - isi;
+		node.left = construct(preO, psi + 1, psi + lhs, inO, isi, idx - 1);
+		node.right = construct(preO, psi + lhs + 1, pei, inO, idx + 1, iei);
+		return node;
+	}
 }

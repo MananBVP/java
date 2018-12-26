@@ -7,8 +7,8 @@ public class Client {
 				 60, -1, -1,  87, -1, -1 , -1};
 		Binary_Trees bt = new Binary_Trees(arr);
 //		Binary_Trees bt1 = new Binary_Trees(arr1);
-		bt.display();
-		System.out.println("------------------");
+//		bt.display();
+//		System.out.println("------------------");
 //		bt1.display();
 //		System.out.println("------------------");
 //		System.out.println(bt.size2());
@@ -19,7 +19,12 @@ public class Client {
 //		bt1.printSingleChild();
 //		bt1.removeLeaf();
 //		bt1.display();
-		System.out.println(bt.rootToNodePath(75));
+//		System.out.println(bt.rootToNodePath(75));
+		
+		int[] preO = {50 , 25, 12 , 37 , 75 , 62 , 87};
+		int[] inO = {12 , 25 , 37 , 50 , 62 , 75 , 87};
+		Binary_Trees bt3 = new Binary_Trees(preO , inO);
+		bt3.display();
 	}
 
 }
