@@ -224,6 +224,7 @@ public class Binary_Trees {
 		if (node == null) {
 			return;
 		}
+		
 	}
 
 	// <-------------------class 38 ------------->
@@ -380,12 +381,13 @@ public class Binary_Trees {
 			return true;
 		}
 		
-		boolean ans = true;
-		ans = ans && isBalanced(node.left) && isBalanced(node.right);
 		int h = height(node.left) - height(node.right);
-		if(h>=-1 && h<=1) {
-			return ans;
+		if(h < -1 && h > 1) {
+			return false;
 		}
-		return false;
+		
+		
+		return true && isBalanced(node.left) && isBalanced(node.right);
+		
 	}
 }
