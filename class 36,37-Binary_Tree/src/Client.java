@@ -16,7 +16,9 @@ public class Client {
 //		System.out.println(bt.min());
 //		System.out.println(bt.height());
 //		System.out.println(bt.find(40));
-		bt1.printSingleChild();
+//		bt1.printSingleChild();
+		bt1.removeLeaf();
+		bt1.display();
 	}
 
 }

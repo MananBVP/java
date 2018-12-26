@@ -157,4 +157,28 @@ public class Binary_Trees {
 		printSingleChild(child, child.left);
 		printSingleChild(child, child.right);
 	}
+	
+	public void removeLeaf() {
+		removeLeaf(root, root.left);
+		removeLeaf(root, root.right);
+	}
+	
+	private void removeLeaf(Node parent , Node child) {
+		if(child == null) {
+			return;
+		}
+		
+		if(child.left == null && child.right == null) {
+			// leaf
+			if(parent.left == child) {
+				parent.left = null;
+			}else {
+				parent.right = null;
+			}
+			return;
+		}
+		
+		removeLeaf(child, child.left);
+		removeLeaf(child, child.right);
+	}
 }
