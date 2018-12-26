@@ -23,7 +23,7 @@ public class Client {
 //		bt1.display();
 //		System.out.println(bt.rootToNodePath(75));
 		
-//		int[] preO = {50 , 25, 12 , 37 , 75 , 62 , 87};
+		int[] preO = {50 , 25, 12 , 37 , 75 , 62 , 87};
 		int[] inO = {12 , 25 , 37 , 50 , 62 , 75 , 87};
 		int[] postO = {12 , 37 , 25 , 62 , 87 , 75 , 50};
 //		Binary_Trees bt3 = new Binary_Trees(preO , inO);
@@ -31,7 +31,8 @@ public class Client {
 //		bt3.display();
 //		bt4.display();
 //		printBinary(15);
-		bt4.preOIterative();
+//		bt4.preOIterative();
+		bt4.postOIterative();
 	}
 	
 	private static class Pair{

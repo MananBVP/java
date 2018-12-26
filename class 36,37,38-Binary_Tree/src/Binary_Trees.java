@@ -280,35 +280,36 @@ public class Binary_Trees {
 		return node;
 	}
 
-	private class Pair{
+	private class Pair {
 		Node node;
 		int wc = 0;
-		public Pair(Node node , int wc) {
+
+		public Pair(Node node, int wc) {
 			this.node = node;
 			this.wc = wc;
 		}
 	}
-	
+
 	public void preOIterative() {
-		Stack<Pair> stack =new Stack<>();
+		Stack<Pair> stack = new Stack<>();
 		Pair rtp = new Pair(root, 0);
 		stack.push(rtp);
-		
-		while(stack.size() > 0) {
+
+		while (stack.size() > 0) {
 			Pair tp = stack.peek();
-			if(tp.wc == 0) {
+			if (tp.wc == 0) {
 				System.out.println(tp.node.data + " ");
-			}else if(tp.wc == 1) {
-				if(tp.node.left != null) {
+			} else if (tp.wc == 1) {
+				if (tp.node.left != null) {
 					Pair lp = new Pair(tp.node.left, 0);
 					stack.push(lp);
 				}
-			}else if(tp.wc == 2) {
-				if(tp.node.right != null) {
+			} else if (tp.wc == 2) {
+				if (tp.node.right != null) {
 					Pair rp = new Pair(tp.node.right, 0);
 					stack.push(rp);
 				}
-			}else {
+			} else {
 				stack.pop();
 			}
 			tp.wc++;
@@ -316,10 +317,33 @@ public class Binary_Trees {
 	}
 
 	public void postOIterative() {
+		Stack<Pair> stack = new Stack<>();
+		Pair rtp = new Pair(root, 0);
+		stack.push(rtp);
 
+		while (stack.size() > 0) {
+			Pair tp = stack.peek();
+			if (tp.wc == 0) {
+				if (tp.node.left != null) {
+					Pair lp = new Pair(tp.node.left, 0);
+					stack.push(lp);
+				}
+
+			} else if (tp.wc == 1) {
+				if (tp.node.right != null) {
+					Pair rp = new Pair(tp.node.right, 0);
+					stack.push(rp);
+				}
+			} else if (tp.wc == 2) {
+				System.out.println(tp.node.data + " ");
+			} else {
+				stack.pop();
+			}
+			tp.wc++;
+		}
 	}
 
 	public void inOIterative() {
-
+		
 	}
 }
