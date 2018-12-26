@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Stack;
 
 
@@ -180,5 +181,34 @@ public class Binary_Trees {
 		
 		removeLeaf(child, child.left);
 		removeLeaf(child, child.right);
+	}
+	
+	public ArrayList<Integer> rootToNodePath(int data) {
+		return rootToNodePath(root, data);
+	}
+	
+	private ArrayList<Integer> rootToNodePath(Node node , int data){
+		if(node == null) {
+			return new ArrayList<>();
+		}
+		if(node.data == data) {
+			ArrayList<Integer> path = new ArrayList<>();
+			path.add(node.data);
+			return path;
+		}
+		
+		ArrayList<Integer> pathfromLC = rootToNodePath(node.left, data);
+		if(pathfromLC.size() > 0) {
+			pathfromLC.add(node.data);
+			return pathfromLC;
+		}
+		
+		ArrayList<Integer> pathfromRC = rootToNodePath(node.right, data);
+		if(pathfromRC.size() > 0) {
+			pathfromRC.add(node.data);
+			return pathfromRC;
+		}
+		
+		return new ArrayList<>();
 	}
 }
