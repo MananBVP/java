@@ -139,4 +139,22 @@ public class Binary_Trees {
 //		found = found || find(node.right,data);
 //		return found;
 	}
+	
+	public void printSingleChild() {
+		printSingleChild(root, root.left);
+		printSingleChild(root, root.right);
+	}
+	
+	private void printSingleChild(Node parent , Node child) {
+		if(child == null) {
+			return;
+		}
+		
+		if((parent.left == child && parent.right == null) || (parent.right == child && parent.left == null)) {
+			System.out.print(child.data+" ");
+		}
+		
+		printSingleChild(child, child.left);
+		printSingleChild(child, child.right);
+	}
 }
