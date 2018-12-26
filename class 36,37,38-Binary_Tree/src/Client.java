@@ -36,6 +36,7 @@ public class Client {
 //		bt4.inOIterative();
 		System.out.println(bt.isBalanced());
 		System.out.println(bt4.isBalanced());
+		System.out.println(bt.IsBalanced());
 	}
 	
 	private static class Pair{

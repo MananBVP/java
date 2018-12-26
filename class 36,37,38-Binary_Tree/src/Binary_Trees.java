@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.Stack;
 
+import Binary_Trees.pair1;
+
 public class Binary_Trees {
 
 	private class Node {
@@ -390,4 +392,29 @@ public class Binary_Trees {
 		return true && isBalanced(node.left) && isBalanced(node.right);
 		
 	}
-}
+	
+	private class BalPair{
+		boolean Balanced;
+		int height;
+		}
+		
+	public boolean IsBalanced() {
+		return IsBalanced(root).Balanced;
+	}
+	private BalPair IsBalanced(Node node) {
+		if(node == null) {
+			BalPair bp = new BalPair();
+			bp.height = 0;
+			bp.Balanced = true;
+			return bp;
+		}
+		BalPair lp = IsBalanced(node.left);
+		BalPair rp = IsBalanced(node.right);
+		
+		BalPair mp = new BalPair();
+		mp.height = Math.max(lp.height, rp.height) + 1 ;
+		mp.Balanced = lp.Balanced && rp.Balanced && ( Math.abs(lp.height - rp.height) <= 1);
+		return mp;
+	}
+	}
+
