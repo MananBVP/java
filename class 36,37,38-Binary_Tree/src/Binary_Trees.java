@@ -370,4 +370,22 @@ public class Binary_Trees {
 			tp.wc++;
 		}
 	}
+	
+	public boolean isBalanced() {
+		return isBalanced(root);
+	}
+	
+	private boolean isBalanced(Node node) {
+		if(node == null) {
+			return true;
+		}
+		
+		boolean ans = true;
+		ans = ans && isBalanced(node.left) && isBalanced(node.right);
+		int h = height(node.left) - height(node.right);
+		if(h>=-1 && h<=1) {
+			return ans;
+		}
+		return false;
+	}
 }

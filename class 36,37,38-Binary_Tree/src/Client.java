@@ -33,7 +33,9 @@ public class Client {
 //		printBinary(15);
 //		bt4.preOIterative();
 //		bt4.postOIterative();
-		bt4.inOIterative();
+//		bt4.inOIterative();
+		System.out.println(bt.isBalanced());
+		System.out.println(bt4.isBalanced());
 	}
 	
 	private static class Pair{
