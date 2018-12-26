@@ -239,6 +239,7 @@ public class Binary_Trees {
 		if(isi > iei && psi > pei) {
 			return null;
 		}
+		//node , data ,left , right , return
 		Node node = new Node();
 		node.data = preO[psi];
 		size++;

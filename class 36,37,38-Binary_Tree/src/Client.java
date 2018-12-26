@@ -1,3 +1,5 @@
+import java.nio.channels.Pipe;
+import java.util.LinkedList;
 
 public class Client {
 
@@ -27,7 +29,41 @@ public class Client {
 //		Binary_Trees bt3 = new Binary_Trees(preO , inO);
 		Binary_Trees bt4 = new Binary_Trees(postO , inO);
 //		bt3.display();
-		bt4.display();
+//		bt4.display();
+		printBinary(15);
+	}
+	
+	private static class Pair{
+		int data;
+		String bin;
+		
+		public Pair(int data , String bin) {
+			this.data = data;
+			this.bin = bin;
+		}
+	}
+	
+	public static void printBinary(int n) {
+		LinkedList<Pair> queue = new LinkedList<>();
+		Pair rmp = new Pair(1, "1");
+		queue.addLast(rmp);
+		
+		while(queue.size() > 0) {
+			Pair rm = queue.removeFirst();
+			System.out.println(rm.data + " = " + rm.bin);
+			Pair lfp = new Pair(rm.data * 2, rm.bin+"0");
+			Pair rgp = new Pair(rm.data * 2 + 1, rm.bin+"1");
+			
+			if(lfp.data <= n) {
+				queue.addLast(lfp);
+			}
+			
+			if(rgp.data <= n) {
+				queue.addLast(rgp);
+			}
+			
+		}
+		
 	}
 
 }
