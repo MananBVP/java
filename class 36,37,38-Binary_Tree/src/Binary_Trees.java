@@ -344,6 +344,30 @@ public class Binary_Trees {
 	}
 
 	public void inOIterative() {
-		
+		Stack<Pair> stack = new Stack<>();
+		Pair rtp = new Pair(root, 0);
+		stack.push(rtp);
+
+		while (stack.size() > 0) {
+			Pair tp = stack.peek();
+			if (tp.wc == 0) {
+				if (tp.node.left != null) {
+					Pair lp = new Pair(tp.node.left, 0);
+					stack.push(lp);
+				}
+
+			} else if (tp.wc == 1) {
+				System.out.println(tp.node.data + " ");
+			} else if (tp.wc == 2) {
+				if (tp.node.right != null) {
+					Pair rp = new Pair(tp.node.right, 0);
+					stack.push(rp);
+				}
+				
+			} else {
+				stack.pop();
+			}
+			tp.wc++;
+		}
 	}
 }

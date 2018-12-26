@@ -32,7 +32,8 @@ public class Client {
 //		bt4.display();
 //		printBinary(15);
 //		bt4.preOIterative();
-		bt4.postOIterative();
+//		bt4.postOIterative();
+		bt4.inOIterative();
 	}
 	
 	private static class Pair{
