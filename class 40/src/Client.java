@@ -2,7 +2,9 @@
 public class Client {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		int[] sa= {12 , 25 , 37 , 50 , 62 , 75 , 87};
+		BST bt = new BST(sa);
+		bt.display();
 
 	}
 
