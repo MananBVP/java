@@ -424,12 +424,8 @@ public class Binary_Trees {
 		}
 		
 		private boolean isBST(Node node) {
-			if(node.left == null || node.right == null) {
+			if(node == null) {
 				return true;
-			}
-			
-			if(node.data < node.left.data || node.data > node.right.data) {
-				return false;
 			}
 			
 			int max = max(node.left);
@@ -450,6 +446,20 @@ public class Binary_Trees {
 			}
 			
 			return true;
+		}
+		
+		private class BstPair{
+			int max;
+			int min;
+			boolean isBST;
+		}
+		
+		public boolean isBST1() {
+			return isBST(root);
+		}
+		
+		private BstPair isBST1(Node node) {
+			
 		}
 	}
 

@@ -22,11 +22,11 @@ public class Client {
 //		bt1.display();
 //		System.out.println(bt.rootToNodePath(75));
 
-		int[] preO = { 50, 25, 12, 37, 75, 62, 87 };
-		int[] inO = { 12, 25, 37, 50, 62, 75, 87 };
-		int[] postO = { 12, 37, 25, 62, 87, 75, 50 };
+//		int[] preO = { 50, 25, 12, 37, 75, 62, 87 };
+//		int[] inO = { 12, 25, 37, 50, 62, 75, 87 };
+//		int[] postO = { 12, 37, 25, 62, 87, 75, 50 };
 //		Binary_Trees bt3 = new Binary_Trees(preO , inO);
-		Binary_Trees bt4 = new Binary_Trees(postO, inO);
+//		Binary_Trees bt4 = new Binary_Trees(postO, inO);
 //		bt3.display();
 //		bt4.display();
 //		printBinary(15);
