@@ -505,20 +505,6 @@ public class Binary_Trees {
 			mp.min = Math.min(node.data , Math.min(lp.min, rp.min));
 			mp.isBST = lp.isBST && rp.isBST && node.data > lp.max && node.data < rp.min;
 			
-//			if(lp.isBST == true && rp.isBST == false) {
-//				mp.lbroot = lp.lbroot;
-//				mp.lbsize = lp.lbsize;
-//			}else if(rp.isBST == true && lp.isBST == false) {
-//				mp.lbroot = rp.lbroot;
-//				mp.lbsize = rp.lbsize;
-//			}else if(rp.isBST == false && lp.isBST == false) {
-//				mp.lbsize = lp.lbsize > rp.lbsize ? lp.lbsize : rp.lbsize;
-//				mp.lbroot = lp.lbsize > rp.lbsize ? lp.lbroot : rp.lbroot;
-//			}else{
-//				mp.lbsize = lp.lbsize + rp.lbsize + 1;
-//				mp.lbroot = node;
-//			}
-			
 			if(mp.isBST == true) {
 				mp.lbroot = node;
 				mp.lbsize = lp.lbsize + rp.lbsize + 1;
