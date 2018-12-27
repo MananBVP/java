@@ -416,5 +416,40 @@ public class Binary_Trees {
 		mp.Balanced = lp.Balanced && rp.Balanced && ( Math.abs(lp.height - rp.height) <= 1);
 		return mp;
 	}
+	
+	//<--------------------class 39---------------------->
+	
+		public boolean isBST() {
+			return isBST(root);
+		}
+		
+		private boolean isBST(Node node) {
+			if(node.left == null || node.right == null) {
+				return true;
+			}
+			
+			if(node.data < node.left.data || node.data > node.right.data) {
+				return false;
+			}
+			
+			int max = max(node.left);
+			int min = min(node.right);
+			
+			if(node.data < max  || node.data > min) {
+				return false;
+			}
+			
+			boolean lbs = isBST(node.left);
+			if(lbs == false) {
+				return false;
+			}
+			
+			boolean rbs = isBST(node.right);
+			if(rbs == false) {
+				return false;
+			}
+			
+			return true;
+		}
 	}
 
