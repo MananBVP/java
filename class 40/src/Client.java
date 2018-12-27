@@ -7,6 +7,8 @@ public class Client {
 		bt.display();
 		System.out.println(bt.max());
 		System.out.println(bt.min());
+		System.out.println(bt.find(12));
+		System.out.println(bt.find(11));
 
 	}
 

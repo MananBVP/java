@@ -76,6 +76,14 @@ public class BST {
 	}
 	
 	private boolean find(Node node , int data) {
+		if(node == null) {
+			return false;
+		}
 		
+		if(node.data == data) {
+			return true;
+		}
+		
+		return node.data > data ? find(node.left , data) : find(node.right, data);
 	}
 }
