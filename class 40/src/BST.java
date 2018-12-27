@@ -84,6 +84,11 @@ public class BST {
 			return true;
 		}
 		
-		return node.data > data ? find(node.left , data) : find(node.right, data);
+//		return node.data > data ? find(node.left , data) : find(node.right, data);
+		if(node.data > data) {
+			return find(node.left, data);
+		}else {
+			return find(node.right, data);
+		}
 	}
 }
