@@ -25,7 +25,7 @@ public class BST {
 		node.data = sa[mid];
 		node.left = construct(sa, lo, mid - 1);
 		node.right = construct(sa, mid + 1, hi);
-		
+		size++;
 		return node;
 	}
 	
@@ -45,5 +45,37 @@ public class BST {
 		System.out.println(str);
 		display(node.left);
 		display(node.right);
+	}
+	
+	public int max() {
+		return max(root);
+	}
+	
+	private int max(Node node) {
+		if(node.right == null) {
+			return node.data;
+		}
+		
+		return max(node.right);
+	}
+	
+	public int min() {
+		return min(root);
+	}
+	
+	private int min(Node node) {
+		if(node.left == null) {
+			return node.data;
+		}
+		
+		return min(node.left);
+	}
+	
+	public boolean find(int data) {
+		return find(root, data);
+	}
+	
+	private boolean find(Node node , int data) {
+		
 	}
 }
