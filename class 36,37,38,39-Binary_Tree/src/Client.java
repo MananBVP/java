@@ -37,6 +37,7 @@ public class Client {
 //		System.out.println(bt4.isBalanced());
 //		System.out.println(bt.IsBalanced());
 		System.out.println(bt.isBST());
+		System.out.println(bt.isBST1());
 	}
 
 	private static class Pair {

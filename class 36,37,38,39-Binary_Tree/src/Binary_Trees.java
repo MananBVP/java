@@ -455,11 +455,27 @@ public class Binary_Trees {
 		}
 		
 		public boolean isBST1() {
-			return isBST(root);
+			return isBST1(root).isBST;
 		}
 		
 		private BstPair isBST1(Node node) {
+			if(node == null) {
+				BstPair bp = new BstPair();
+				bp.max = Integer.MIN_VALUE;
+				bp.min = Integer.MAX_VALUE;
+				bp.isBST = true;
+				return bp;
+			}
 			
+			BstPair lp = isBST1(node.left);
+			BstPair rp = isBST1(node.right);
+			
+			BstPair mp = new BstPair();
+			mp.max = Math.max(node.data , Math.max(lp.max, rp.max));
+			mp.min = Math.min(node.data , Math.min(lp.min, rp.min));
+			mp.isBST = lp.isBST && rp.isBST && node.data > lp.max && node.data < rp.min;
+			
+			return mp;		
 		}
 	}
 
