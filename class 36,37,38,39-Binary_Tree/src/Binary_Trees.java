@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.util.Stack;
 
-import Binary_Trees.pair1;
 
 public class Binary_Trees {
 
@@ -481,12 +480,12 @@ public class Binary_Trees {
 		}
 		
 		
-		public void isBST2() {
-			BstPair bp = isBST2(root);
+		public void largestBST() {
+			BstPair bp = largestBST(root);
 			System.out.println(bp.lbroot.data +" @ " + bp.lbsize);
 		}
 		
-		private BstPair isBST2(Node node) {
+		private BstPair largestBST(Node node) {
 			if(node == null) {
 				BstPair bp = new BstPair();
 				bp.max = Integer.MIN_VALUE;
@@ -497,8 +496,8 @@ public class Binary_Trees {
 				return bp;
 			}
 			
-			BstPair lp = isBST2(node.left);
-			BstPair rp = isBST2(node.right);
+			BstPair lp = largestBST(node.left);
+			BstPair rp = largestBST(node.right);
 			
 			BstPair mp = new BstPair();
 			mp.max = Math.max(node.data , Math.max(lp.max, rp.max));

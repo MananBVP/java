@@ -38,11 +38,11 @@ public class Client {
 //		System.out.println(bt.IsBalanced());
 //		System.out.println(bt.isBST());
 //		System.out.println(bt.isBST1());
-		bt.isBST2();
+		bt.largestBST();
 		int[] arr2 = {50, 25, 12, -1, 37, 30, 24, -1, 32, -1, -1, 40, 38, -1, 
 				 42, -1, -1, -1, -1, 75, 62, -1, 87, -1, -1, -1};
 	Binary_Trees bt4 = new Binary_Trees(arr2);
-	bt4.isBST2();
+	bt4.largestBST();
 	System.out.println(bt4.isBST1());
 	}
 
