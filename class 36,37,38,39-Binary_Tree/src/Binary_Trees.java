@@ -519,5 +519,12 @@ public class Binary_Trees {
 			}
 			return mp;		
 		}
+		
+		public void Transform() {
+			
+		}
+		
+		private void Transform(Node node) {
+			
+		}
 	}
-
