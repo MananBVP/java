@@ -196,7 +196,7 @@ public class BST {
 
 	private int LCA(Node node, int lo, int hi) {
 		if (node == null) {
-			return 0;
+			return -1;
 		}
 
 		if (node.data < lo) {
@@ -206,5 +206,26 @@ public class BST {
 		}else {
 			return node.data;
 		}
+	}
+	
+	public void printTargetSumPair(int target) {
+		printTargetSumPair(root, target);
+	}
+	
+	private void printTargetSumPair(Node node , int target) {
+		if(node == null) {
+			return;
+		}
+		printTargetSumPair(node.left, target);
+		
+		int comp = target - node.data;
+		
+		if(node.data < comp) {
+			boolean ans = find(comp);
+			if(ans) {
+				System.out.println(node.data+" "+comp);
+			}
+		}
+		printTargetSumPair(node.right, target);
 	}
 }
