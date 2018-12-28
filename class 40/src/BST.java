@@ -93,5 +93,23 @@ public class BST {
 		}
 	}
 	
-	public void printInRange()
+	public void printInRange(int lo , int hi) {
+		printInRange(root, lo, hi);
+	}
+	
+	private void printInRange(Node node , int lo , int hi) {
+		if(node == null) {
+			return;
+		}
+		
+		if(node.data >= lo && node.data <= hi) {
+			printInRange(node.left, lo, hi);
+			System.out.print(node.data + " ");
+			printInRange(node.right, lo, hi);
+		}else if(node.data < lo) {
+			printInRange(node.right, lo, hi);
+		}else if(node.data > hi) {
+			printInRange(node.left, lo, hi);
+		}
+	}
 }
