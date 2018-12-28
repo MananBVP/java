@@ -36,7 +36,7 @@ public class Client {
 //		bt.remove(75);
 //		bt.display();
 //		System.out.println(bt.LCA(12, 87));
-		bt.printTargetSumPair(99);
+		bt.printTargetSumPair(100);
 		
 	}
 

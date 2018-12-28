@@ -226,6 +226,7 @@ public class BST {
 				System.out.println(node.data+" "+comp);
 			}
 		}
+	
 		printTargetSumPair(node.right, target);
 	}
 }
