@@ -89,6 +89,9 @@ public class BST {
 			return find(node.left, data);
 		}else {
 			return find(node.right, data);
+			
 		}
 	}
+	
+	public void printInRange()
 }
