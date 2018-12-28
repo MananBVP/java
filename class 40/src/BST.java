@@ -138,18 +138,18 @@ public class BST {
 	}
 
 	private Node add(Node node, int data) {
-		if(node == null) {
+		if (node == null) {
 			Node node1 = new Node();
 			node1.data = data;
-			return node1;		
+			return node1;
 		}
-		
-		if(data < node.data) {
+
+		if (data < node.data) {
 			node.left = add(node.left, data);
-		}else if(data > node.data) {
+		} else if (data > node.data) {
 			node.right = add(node.right, data);
 		}
-		
+
 		return node;
 	}
 
@@ -158,34 +158,53 @@ public class BST {
 	}
 
 	private Node remove(Node node, int data) {
-		if(node == null) {
+		if (node == null) {
 			return null;
 		}
-		
-		if(data < node.data) {
+
+		if (data < node.data) {
 			node.left = remove(node.left, data);
 		}
-		
-		if(data > node.data) {
+
+		if (data > node.data) {
 			node.right = remove(node.right, data);
 		}
-		if(node.data == data) {
-			if(node.left == null && node.right == null) {
+		if (node.data == data) {
+			if (node.left == null && node.right == null) {
 				return null;
-			}else if(node.left == null || node.right == null) {
-				if(node.left != null) {
+			} else if (node.left == null || node.right == null) {
+				if (node.left != null) {
 					return node.left;
-				}else {
+				} else {
 					return node.right;
 				}
-			}else {
+			} else {
 				int temp = max(node.left);
 				node.data = temp;
 				node.left = remove(node.left, temp);
 				return node;
 			}
 		}
-		
+
 		return node;
+
+	}
+
+	public int LCA(int lo, int hi) {
+		return LCA(root, lo, hi);
+	}
+
+	private int LCA(Node node, int lo, int hi) {
+		if (node == null) {
+			return 0;
+		}
+
+		if (node.data < lo) {
+			return LCA(node.right, lo, hi);
+		} else if (node.data > hi) {
+			return LCA(node.left, lo, hi);
+		}else {
+			return node.data;
+		}
 	}
 }
