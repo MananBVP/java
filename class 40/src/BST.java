@@ -174,11 +174,10 @@ public class BST {
 				return null;
 			}else if(node.left == null || node.right == null) {
 				if(node.left != null) {
-					node = node.left;
+					return node.left;
 				}else {
-					node = node.right;
+					return node.right;
 				}
-				return node;
 			}else {
 				int temp = max(node.left);
 				node.data = temp;
