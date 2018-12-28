@@ -134,7 +134,7 @@ public class BST {
 	}
 
 	public void add(int data) {
-		add(root, data);
+		root = add(root, data);
 	}
 
 	private Node add(Node node, int data) {
@@ -154,10 +154,19 @@ public class BST {
 	}
 
 	public void remove(int data) {
-
+		remove(root, data);
 	}
 
 	private Node remove(Node node, int data) {
-
+		if(node == null) {
+			return null;
+		}
+		
+		if(node.data == data) {
+			if(node.left == null)
+		}
+		
+		
+		
 	}
 }
