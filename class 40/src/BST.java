@@ -182,7 +182,7 @@ public class BST {
 			}else {
 				int temp = max(node.left);
 				node.data = temp;
-				node.left = remove(node.left, data);
+				node.left = remove(node.left, temp);
 				return node;
 			}
 		}

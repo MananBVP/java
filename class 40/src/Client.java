@@ -22,7 +22,7 @@ public class Client {
 		bst2.add(40);
 		bst2.display();
 		System.out.println("---------------");
-		bst2.remove(40);
+		bst2.remove(20);
 		bst2.display();
 		
 	}
