@@ -100,7 +100,7 @@ public class BST {
 		if (node == null) {
 			return;
 		}
-		
+
 		if (node.data >= lo && node.data <= hi) {
 			printInRange(node.left, lo, hi);
 			System.out.print(node.data + " ");
@@ -113,7 +113,7 @@ public class BST {
 	}
 
 	private int rsum;
-	
+
 	public void replaceWithSumOfLargerNodes() {
 		rsum = 0;
 		replaceWithSumOfLargerNodes(root);
@@ -123,13 +123,41 @@ public class BST {
 		if (node == null) {
 			return;
 		}
-		
+
 		replaceWithSumOfLargerNodes(node.right);
-		
+
 		int ond = node.data;
 		node.data = rsum;
 		rsum += ond;
-		
+
 		replaceWithSumOfLargerNodes(node.left);
+	}
+
+	public void add(int data) {
+		add(root, data);
+	}
+
+	private Node add(Node node, int data) {
+		if(node == null) {
+			Node node1 = new Node();
+			node1.data = data;
+			return node1;		
+		}
+		
+		if(data < node.data) {
+			node.left = add(node.left, data);
+		}else if(data > node.data) {
+			node.right = add(node.right, data);
+		}
+		
+		return node;
+	}
+
+	public void remove(int data) {
+
+	}
+
+	private Node remove(Node node, int data) {
+
 	}
 }

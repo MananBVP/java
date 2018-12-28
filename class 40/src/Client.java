@@ -18,8 +18,10 @@ public class Client {
 		BST bst2 = new BST(sa2);
 		bst2.display();
 		System.out.println("---------------");
-		bst2.replaceWithSumOfLargerNodes();
+//		bst2.replaceWithSumOfLargerNodes();
+		bst2.add(40);
 		bst2.display();
+		
 	}
 
 }
