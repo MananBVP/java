@@ -154,7 +154,7 @@ public class BST {
 	}
 
 	public void remove(int data) {
-		remove(root, data);
+		root = remove(root, data);
 	}
 
 	private Node remove(Node node, int data) {
@@ -162,11 +162,31 @@ public class BST {
 			return null;
 		}
 		
-		if(node.data == data) {
-			if(node.left == null)
+		if(data < node.data) {
+			node.left = remove(node.left, data);
 		}
 		
+		if(data > node.data) {
+			node.right = remove(node.right, data);
+		}
+		if(node.data == data) {
+			if(node.left == null && node.right == null) {
+				return null;
+			}else if(node.left == null || node.right == null) {
+				if(node.left != null) {
+					node = node.left;
+				}else {
+					node = node.right;
+				}
+				return node;
+			}else {
+				int temp = max(node.left);
+				node.data = temp;
+				node.left = remove(node.left, data);
+				return node;
+			}
+		}
 		
-		
+		return node;
 	}
 }
