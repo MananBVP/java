@@ -5,8 +5,8 @@ public class HMClient {
 
 	public static void main(String[] args) {
 		highestFrequencyCharacter("aababahaha");
-		int[] one = {5,1,3,1,2,2,1};
-		int[] two = {2,2,4,1,1,5,2};
+		int[] one = { 5, 1, 3, 1, 2, 2, 1 };
+		int[] two = { 2, 2, 4, 1, 1, 5, 2 };
 		getCommonEelment1(one, two);
 		getCommonEelment2(one, two);
 
@@ -38,24 +38,41 @@ public class HMClient {
 
 	public static void getCommonEelment1(int[] one, int[] two) {
 		HashMap<Integer, Integer> gce1 = new HashMap<>();
-		
-		for(int i : one) {
-			gce1.put(i, gce1.containsKey(i) ? gce1.get(i) + 1 :1);
+
+		for (int i : one) {
+			gce1.put(i, gce1.containsKey(i) ? gce1.get(i) + 1 : 1);
 		}
-		
-		for(int i : two) {
-			gce1.put(i, gce1.containsKey(i) ? gce1.get(i) + 1 :1);
-		}
-		
-		for(int i : one) {
-			if(gce1.get(i) > 1) {
+
+		for (int i : two) {
+//			gce1.put(i, gce1.containsKey(i) ? gce1.get(i) + 1 : 1);
+			if(gce1.containsKey(i)) {
 				System.out.print(i + " ");
-				gce1.put(i, 1);
+				gce1.remove(i);
 			}
 		}
+		System.out.println();
+
+//		for (int i : one) {
+//			if (gce1.get(i) > 1) {
+//				System.out.print(i + " ");
+//				gce1.put(i, 1);
+//			}
+//		}
 	}
 
 	public static void getCommonEelment2(int[] one, int[] two) {
+		HashMap<Integer, Integer> gce2 = new HashMap<>();
 
+		for (int i : one) {
+			gce2.put(i, gce2.containsKey(i) ? gce2.get(i) + 1 : 1);
+		}
+
+		for (int i : two) {
+			if(gce2.containsKey(i) && gce2.get(i) > 0) {
+				System.out.print(i + " ");
+				gce2.put(i, gce2.get(i) - 1);
+			}
+		}
+		System.out.println();
 	}
 }
