@@ -33,11 +33,12 @@ public class AVL {
 
 	private void sethnb(Node node) {
 		int lh = node.left != null ? node.left.height : 0;
-		int rh = node.right !=null ? node.right.height : 0;
-		
-		node.height = Math.max(lh , rh) + 1 ;
+		int rh = node.right != null ? node.right.height : 0;
+
+		node.height = Math.max(lh, rh) + 1;
 		node.balance = lh - rh;
 	}
+
 	public void display() {
 		display(root);
 	}
@@ -48,7 +49,7 @@ public class AVL {
 		}
 		String str = "";
 		str += node.left != null ? node.left.data : ".";
-		str += " -> " + node.data + "[" +  node.height + "," + node.balance + "]<-" ;
+		str += " -> " + node.data + "[" + node.height + "," + node.balance + "] <-";
 		str += node.right != null ? node.right.data : ".";
 
 		System.out.println(str);
@@ -160,43 +161,42 @@ public class AVL {
 		} else if (data > node.data) {
 			node.right = add(node.right, data);
 		}
-		
+
 		sethnb(node);
-		
-		if(node.balance > 1 && data < node.data) { //ll
+
+		if (node.balance > 1 && data < node.left.data) { // ll
 			node = rightRotate(node);
-		}else if(node.balance > 1 && data > node.data) { //lr
+		} else if (node.balance > 1 && data > node.left.data) { // lr
 			node.left = leftRotate(node.left);
 			node = rightRotate(node);
-		}else if(node.balance < -1 && data > node.data) { //rr
+		} else if (node.balance < -1 && data > node.data) { // rr
 			node = leftRotate(node);
-		}else if(node.balance < -1 && data < node.data) { //rl
+		} else if (node.balance < -1 && data < node.right.data) { // rl
 			node.right = rightRotate(node.right);
 			node = leftRotate(node);
 		}
 
-		
 		return node;
-		
+
 	}
-	
+
 	private Node rightRotate(Node z) {
 		Node y = z.left;
 		Node t3 = y.right;
 		y.right = z;
 		z.left = t3;
-		
+
 		sethnb(z);
 		sethnb(y);
 		return y;
 	}
-	
+
 	private Node leftRotate(Node z) {
 		Node y = z.right;
 		Node t3 = y.left;
 		y.left = z;
 		z.right = t3;
-		
+
 		sethnb(z);
 		sethnb(y);
 		return y;
@@ -207,10 +207,9 @@ public class AVL {
 	}
 
 	private Node remove(Node node, int data) {
-		if (node == null) {
+		if(node == null) {
 			return null;
 		}
-
 		if (data < node.data) {
 			node.left = remove(node.left, data);
 		}
@@ -223,16 +222,31 @@ public class AVL {
 				return null;
 			} else if (node.left == null || node.right == null) {
 				if (node.left != null) {
-					return node.left;
+					node = node.left;
 				} else {
-					return node.right;
+					node = node.right;
 				}
+				return node;
 			} else {
 				int temp = max(node.left);
 				node.data = temp;
 				node.left = remove(node.left, temp);
 				return node;
 			}
+		}
+
+		sethnb(node);
+
+		if (node.balance > 1 && node.left.balance >= 0) { // ll
+			node = rightRotate(node);
+		} else if (node.balance > 1 && node.left.balance < 0) { // lr
+			node.left = leftRotate(node.left);
+			node = rightRotate(node);
+		} else if (node.balance < -1 && node.right.balance < 0) { // rr
+			node = leftRotate(node);
+		} else if (node.balance < -1 && node.right.balance >= 0) { // rl
+			node.right = rightRotate(node.right);
+			node = leftRotate(node);
 		}
 
 		return node;
@@ -252,30 +266,30 @@ public class AVL {
 			return LCA(node.right, lo, hi);
 		} else if (node.data > hi) {
 			return LCA(node.left, lo, hi);
-		}else {
+		} else {
 			return node.data;
 		}
 	}
-	
+
 	public void printTargetSumPair(int target) {
 		printTargetSumPair(root, target);
 	}
-	
-	private void printTargetSumPair(Node node , int target) {
-		if(node == null) {
+
+	private void printTargetSumPair(Node node, int target) {
+		if (node == null) {
 			return;
 		}
 		printTargetSumPair(node.left, target);
-		
+
 		int comp = target - node.data;
-		
-		if(node.data < comp) {
+
+		if (node.data < comp) {
 			boolean ans = find(comp);
-			if(ans) {
-				System.out.println(node.data+" "+comp);
+			if (ans) {
+				System.out.println(node.data + " " + comp);
 			}
 		}
-	
+
 		printTargetSumPair(node.right, target);
 	}
 }
