@@ -10,6 +10,8 @@ public class HMClient {
 		getCommonEelment1(one, two);
 		getCommonEelment2(one, two);
 
+		int[] arr = { 2, 12, 9, 16, 10, 5, 3, 20, 25, 11, 1, 8, 6 };
+		longestConsecutiveSequence(arr);
 	}
 
 	public static void highestFrequencyCharacter(String word) {
@@ -45,7 +47,7 @@ public class HMClient {
 
 		for (int i : two) {
 //			gce1.put(i, gce1.containsKey(i) ? gce1.get(i) + 1 : 1);
-			if(gce1.containsKey(i)) {
+			if (gce1.containsKey(i)) {
 				System.out.print(i + " ");
 				gce1.remove(i);
 			}
@@ -68,11 +70,44 @@ public class HMClient {
 		}
 
 		for (int i : two) {
-			if(gce2.containsKey(i) && gce2.get(i) > 0) {
+			if (gce2.containsKey(i) && gce2.get(i) > 0) {
 				System.out.print(i + " ");
 				gce2.put(i, gce2.get(i) - 1);
 			}
 		}
 		System.out.println();
+	}
+
+	public static void longestConsecutiveSequence(int[] arr) {
+		HashMap<Integer, Boolean> map = new HashMap<>();
+		
+		for(int val : arr) {
+			map.put(val, true);
+		}
+		
+		for(int val : arr) {
+			map.put(val, !map.containsKey(val -1));
+		}
+		
+		Integer msp = null;
+		Integer mlen = 0;
+		
+		for(int val : arr) {
+			if(map.get(val) == true) {
+				int tsp = val;
+				int tlen = 1;
+				
+				while(map.containsKey(tsp + tlen)) {
+					tlen++;
+				}
+				
+				if(tlen > mlen) {
+					mlen = tlen;
+					msp = tsp;
+				}
+			}
+		}
+		
+		System.out.println(msp + " @ "+ mlen);
 	}
 }
