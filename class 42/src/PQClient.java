@@ -4,9 +4,11 @@ import java.util.PriorityQueue;
 public class PQClient {
 
 	public static void main(String[] args) {
-		int[] arr = { 2, 3, 6, 8, 9, 7, 5, 11, 17, 1 };
-		printKLargest(arr, 3);
-		printKLargestBetter(arr, 3);
+//		int[] arr = { 2, 3, 6, 8, 9, 7, 5, 11, 17, 1 };
+//		printKLargest(arr, 3);
+//		printKLargestBetter(arr, 3);
+		int[] arr1 = { 30, 10, 40, 20, 50, 70, 80, 60, 110, 90, 100, 120 };
+		sortAlmostSortedArray(arr1, 2);
 
 	}
 
@@ -38,5 +40,27 @@ public class PQClient {
 		}
 
 		System.out.print(pq);
+	}
+
+	public static void sortAlmostSortedArray(int[] arr, int k) {
+
+		PriorityQueue<Integer> pq = new PriorityQueue<>();
+
+		for(int i =0; i < arr.length; i++) {
+			if (i < k + 1) {
+				pq.add(arr[i]);
+			} else {
+				arr[i - k -1] = pq.remove();
+				pq.add(arr[i]);
+			}
+		}
+		
+		for(int i = arr.length-1-k;pq.size()>0;i++) {
+			arr[i]=pq.remove();
+		}
+		
+		for(int j : arr) {
+			System.out.print(j + " ");
+		}
 	}
 }
