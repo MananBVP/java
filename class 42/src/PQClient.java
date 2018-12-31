@@ -42,7 +42,7 @@ public class PQClient {
 		System.out.print(pq);
 	}
 
-	public static void sortAlmostSortedArray(int[] arr, int k) {
+	public static void sortAlmostSortedArray(int[] arr, int k) { //sapce = O(k) time = O(nlogk)
 
 		PriorityQueue<Integer> pq = new PriorityQueue<>();
 

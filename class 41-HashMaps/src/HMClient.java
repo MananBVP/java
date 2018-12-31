@@ -80,34 +80,34 @@ public class HMClient {
 
 	public static void longestConsecutiveSequence(int[] arr) {
 		HashMap<Integer, Boolean> map = new HashMap<>();
-		
-		for(int val : arr) {
+
+		for (int val : arr) {
 			map.put(val, true);
 		}
-		
-		for(int val : arr) {
-			map.put(val, !map.containsKey(val -1));
+
+		for (int val : arr) {
+			map.put(val, !map.containsKey(val - 1));
 		}
-		
+
 		Integer msp = null;
 		Integer mlen = 0;
-		
-		for(int val : arr) {
-			if(map.get(val) == true) {
+
+		for (int val : arr) {
+			if (map.get(val) == true) {
 				int tsp = val;
 				int tlen = 1;
-				
-				while(map.containsKey(tsp + tlen)) {
+
+				while (map.containsKey(tsp + tlen)) {
 					tlen++;
 				}
-				
-				if(tlen > mlen) {
+
+				if (tlen > mlen) {
 					mlen = tlen;
 					msp = tsp;
 				}
 			}
 		}
-		
-		System.out.println(msp + " @ "+ mlen);
+
+		System.out.println(msp + " @ " + mlen);
 	}
 }
