@@ -7,9 +7,29 @@ public class PQClient {
 //		int[] arr = { 2, 3, 6, 8, 9, 7, 5, 11, 17, 1 };
 //		printKLargest(arr, 3);
 //		printKLargestBetter(arr, 3);
-		int[] arr1 = { 30, 10, 40, 20, 50, 70, 80, 60, 110, 90, 100, 120 };
-		sortAlmostSortedArray(arr1, 2);
-
+//		int[] arr1 = { 30, 10, 40, 20, 50, 70, 80, 60, 110, 90, 100, 120 };
+//		sortAlmostSortedArray(arr1, 2);
+		
+		MedianPQ mpq = new MedianPQ();
+		mpq.add(10);
+		System.out.println(mpq.peek());
+		mpq.add(100);
+		System.out.println(mpq.peek());
+		mpq.add(90);
+		System.out.println(mpq.peek());
+		mpq.add(80);
+		System.out.println(mpq.peek());
+		mpq.add(110);
+		System.out.println(mpq.peek());
+		mpq.add(120);
+		System.out.println(mpq.peek());
+		mpq.add(105);
+		System.out.println(mpq.peek());
+		
+		System.out.println("------------------");
+		while(mpq.size() > 0) {
+			System.out.println(mpq.remove());
+		}
 	}
 
 	public static void printKLargest(int[] arr, int k) { // space = O(n) time = O(n + k)logn
