@@ -6,7 +6,8 @@ import java.util.PriorityQueue;
 public class PQClient {
 
 	public static void main(String[] args) {
-//		int[] arr = { 2, 3, 6, 8, 9, 7, 5, 11, 17, 1 };
+		int[] arr = { 2, 3, 6, 8, 9, 7, 5, 11, 17, 1 };
+		heapSort(arr);
 //		printKLargest(arr, 3);
 //		printKLargestBetter(arr, 3);
 //		int[] arr1 = { 30, 10, 40, 20, 50, 70, 80, 60, 110, 90, 100, 120 };
@@ -31,14 +32,14 @@ public class PQClient {
 //		System.out.println("------------------");
 //		while(mpq.size() > 0) {
 //			System.out.println(mpq.remove());
-
-		ArrayList<Integer> l0 = new ArrayList<>(Arrays.asList(10, 20, 30, 40));
-		ArrayList<Integer> l1 = new ArrayList<>(Arrays.asList(22, 27, 28, 35, 55));
-		ArrayList<Integer> l2 = new ArrayList<> (Arrays.asList(11, 32, 41));
-		ArrayList<Integer> l3 = new ArrayList<> (Arrays.asList(5, 12, 26, 38));
-		ArrayList<ArrayList<Integer>> lists = new ArrayList<> (Arrays.asList(l0,l1,l2,l3));
-		
-		mergeSortedLists(lists);
+//
+//		ArrayList<Integer> l0 = new ArrayList<>(Arrays.asList(10, 20, 30, 40));
+//		ArrayList<Integer> l1 = new ArrayList<>(Arrays.asList(22, 27, 28, 35, 55));
+//		ArrayList<Integer> l2 = new ArrayList<> (Arrays.asList(11, 32, 41));
+//		ArrayList<Integer> l3 = new ArrayList<> (Arrays.asList(5, 12, 26, 38));
+//		ArrayList<ArrayList<Integer>> lists = new ArrayList<> (Arrays.asList(l0,l1,l2,l3));
+//		
+//		mergeSortedLists(lists);
 
 //		ArrayList<ArrayList> list = new ArrayList<>();
 //		
@@ -68,6 +69,21 @@ public class PQClient {
 //		list.add(l1);
 	}
 
+	
+	public static void heapSort(int[] arr) {
+		Heap hp = new Heap();
+		
+		for(int val : arr) {
+			hp.add(val);
+		}
+		
+		hp.display();
+		System.out.println("---------------");
+		
+		while(hp.size() > 0) {
+			System.out.print(hp.remove() + " ");
+		}
+	}
 	public static void printKLargest(int[] arr, int k) { // space = O(n) time = O(n + k)logn
 
 		PriorityQueue<Integer> pq = new PriorityQueue<>(Collections.reverseOrder());
