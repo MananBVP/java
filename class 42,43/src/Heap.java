@@ -4,7 +4,11 @@ public class Heap {
 	private ArrayList<Integer> data = new ArrayList<>();
 
 	public Heap(int[] arr) {
-		for(int val : arr) {
+		
+//		for(int val : arr) {  takes nlogn time for n size array
+//			add(val);
+//		}
+		for(int val : arr) { // takes O(n) time for n size array
 			data.add(val);
 		}
 		
