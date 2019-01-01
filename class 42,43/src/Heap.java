@@ -3,8 +3,14 @@ import java.util.ArrayList;
 public class Heap {
 	private ArrayList<Integer> data = new ArrayList<>();
 
-	public Heap(int[] arr) {
+	private boolean max = false;
+	public Heap() {
 		
+	}
+
+	public Heap(int[] arr , boolean max) {
+		
+		this.max = max;
 //		for(int val : arr) {  takes nlogn time for n size array
 //			add(val);
 //		}
@@ -15,6 +21,10 @@ public class Heap {
 		for(int i = data.size() / 2 - 1; i >= 0; i--) {
 			downHeapify(i);
 		}
+	}
+	
+	public Heap(boolean max) {
+		this.max = max;
 	}
 	
 	public void add(int val) {
@@ -31,7 +41,7 @@ public class Heap {
 
 		int pi = (ci - 1) / 2;
 
-		if (data.get(ci) < data.get(pi)) {
+		if (isHigherPriority(pi, ci) == false) {
 			swap(pi, ci);
 			upHeapify(pi);
 		}
@@ -54,12 +64,12 @@ public class Heap {
 		int mini = pi;
 
 		int lci = (2 * pi) + 1;
-		if (lci < data.size() && data.get(lci) < data.get(pi)) {
+		if (lci < data.size() && isHigherPriority(mini, lci) == false) {
 			mini = lci;
 		}
 
 		int rci = (2 * pi) + 2;
-		if (rci < data.size() && data.get(rci) < data.get(mini)) {
+		if (rci < data.size() && isHigherPriority(mini, rci) == false) {
 			mini = rci;
 		}
 
@@ -86,5 +96,14 @@ public class Heap {
 		int jth = data.get(j);
 		data.set(i, jth);
 		data.set(j, ith);
+	}
+	
+	public boolean isHigherPriority(int pi , int ci) {
+		
+		if(max == false) {
+			return data.get(pi) < data.get(ci);
+		}else {
+			return data.get(pi) > data.get(ci);
+		}
 	}
 }

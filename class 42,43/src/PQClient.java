@@ -92,9 +92,21 @@ public class PQClient {
 //		}
 //	}
 	
-	public static void heapSort(int[] arr) {
-		Heap hp = new Heap(arr);
+//	public static void heapSort(int[] arr) {
+//		Heap hp = new Heap(arr);
+//		
 		
+//		hp.display();
+//		System.out.println("---------------");
+		
+//		while(hp.size() > 0) {
+//			System.out.print(hp.remove() + " ");
+//		}
+//	}
+	
+	public static void heapSort(int[] arr) {
+		Heap hp = new Heap(arr , true);
+//		Heap hp = new Heap(arr , false);
 		
 //		hp.display();
 //		System.out.println("---------------");
