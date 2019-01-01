@@ -70,15 +70,34 @@ public class PQClient {
 	}
 
 	
+//	public static void heapSort(int[] arr) {
+//		Heap hp = new Heap();
+//		
+//		for(int val : arr) {
+//			hp.add(val);
+//		}
+	
+//	public static void heapSort(int[] arr) {
+//		Heap hp = new Heap();
+//		
+//		for(int val : arr) {
+//			hp.add(val);
+//		}
+//		
+//		hp.display();
+//		System.out.println("---------------");
+//		
+//		while(hp.size() > 0) {
+//			System.out.print(hp.remove() + " ");
+//		}
+//	}
+	
 	public static void heapSort(int[] arr) {
-		Heap hp = new Heap();
+		Heap hp = new Heap(arr);
 		
-		for(int val : arr) {
-			hp.add(val);
-		}
 		
-		hp.display();
-		System.out.println("---------------");
+//		hp.display();
+//		System.out.println("---------------");
 		
 		while(hp.size() > 0) {
 			System.out.print(hp.remove() + " ");

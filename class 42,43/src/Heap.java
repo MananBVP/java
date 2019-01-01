@@ -3,6 +3,16 @@ import java.util.ArrayList;
 public class Heap {
 	private ArrayList<Integer> data = new ArrayList<>();
 
+	public Heap(int[] arr) {
+		for(int val : arr) {
+			data.add(val);
+		}
+		
+		for(int i = data.size() / 2; i >= 0; i--) {
+			downHeapify(i);
+		}
+	}
+	
 	public void add(int val) {
 
 		data.add(val);
