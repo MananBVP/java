@@ -102,7 +102,7 @@ public class Hash_Map<K, V> {
 			System.out.print("B" + bi + " ");
 			for (int di = 0; di < buckets[bi].size; di++) {
 				HMNode hmnode = buckets[bi].getAt(di);
-				System.out.print("[" + hmnode.key + "_" + hmnode.value + "]");
+				System.out.print("[" + hmnode.key + "_" + hmnode.value + "],");
 				
 			}
 			System.out.println(".");
