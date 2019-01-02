@@ -5,6 +5,7 @@ public class Client {
 		Linked_List<String> ls = new Linked_List<>();
 		ls.addLast("hello");
 		ls.addLast("world");
+		ls.addLast("Java");
 		ls.dispaly();
 
 	}
