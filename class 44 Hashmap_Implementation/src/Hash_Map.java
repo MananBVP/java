@@ -108,7 +108,7 @@ public class Hash_Map<K, V> {
 		for (int di = 0; di < buckets[bi].size; di++) {
 			HMNode hmnode = buckets[bi].getAt(di);
 			if (hmnode.key.equals(key)) {
-				buckets[bi].removeAt(di);
+				buckets[bi].removeAt(di) ;
 				return;
 			}
 		}
