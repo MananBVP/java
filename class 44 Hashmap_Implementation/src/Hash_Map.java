@@ -103,7 +103,7 @@ public class Hash_Map<K, V> {
 			for (int di = 0; di < buckets[bi].size; di++) {
 				HMNode hmnode = buckets[bi].getAt(di);
 				System.out.print("[" + hmnode.key + "_" + hmnode.value + "],");
-				
+
 			}
 			System.out.println(".");
 		}
@@ -145,7 +145,6 @@ public class Hash_Map<K, V> {
 			buckets[i] = new Linked_List<>();
 		}
 
-		
 		HMNode hmnode;
 		size = 0;
 		for (int bi = 0; bi < oba.length; bi++) {
