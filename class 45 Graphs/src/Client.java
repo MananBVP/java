@@ -22,10 +22,13 @@ public class Client {
 		g.addEdge("F", "G", 3);
 		
 		g.display();
-		g.removeEdge("B", "C");
-		g.display();
-		g.removeVertex("D");
-		g.display();
+//		g.removeEdge("B", "C");
+//		g.display();
+//		g.removeVertex("D");
+//		g.display();
+		
+		System.out.println(g.hasPath("A", "G"));
+		g.printAllPath("A", "G");
 
 	}
 
