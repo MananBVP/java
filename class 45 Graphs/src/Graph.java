@@ -27,7 +27,7 @@ public class Graph {
 			removeEdge(vname, nbname);
 		}
 		
-		vces.remove(neighbour);
+		vces.remove(vname);
 	}
 
 	public int countEdges() {
