@@ -77,8 +77,6 @@ public class Graph {
 
 	private boolean hasPathhelper(String src, String dest, HashSet<String> visited) {
 
-		HashMap<String, HashMap<String, Boolean>> hp = new HashMap<>();
-
 		if (src.equals(dest)) {
 			return true;
 		}
@@ -117,20 +115,71 @@ public class Graph {
 
 		visited.remove(src);
 	}
+	
+	private String sp;
+	private String lp;
+	private String cp;
+	private String fp;
 
-	public void smallestPnW(String s, String d) {
-
+	private int spw;
+	private int lpw;
+	private int cpw;
+	private int fpw;
+	
+	public void multiSolver(String s, String d, int cf, int ff,int k) {
+		sp="";
+		lp="";
+		cp="";
+		fp="";
+		
+		spw = Integer.MAX_VALUE;
+		lpw = Integer.MIN_VALUE;
+		cpw = Integer.MAX_VALUE;
+		fpw = Integer.MIN_VALUE;
+		
+		multisolver(s, d, new HashSet<>(), cf, ff, k, s, 0);
+		System.out.println("Shortest = " + sp + "@" + spw);
+		System.out.println("Longest = " + lp + "@" + lpw);
+		System.out.println("Ceil = " + cp + "@" + cpw);
+		System.out.println("Floor = " + fp + "@" + fpw);
 	}
+	
+	private void multisolver(String s, String d, HashSet<String> visited, int cf, int ff, int k, String psf, int wsf) {
+		
+		if(s.equals(d)) {
+			System.out.println(psf + "@" + wsf);
+			
+			if(wsf < spw) {
+				sp = psf;
+				spw = wsf;
+			}
+			
+			if(wsf > lpw) {
+				lp = psf;
+				lpw = wsf;
+			}
+			
+			if(wsf > cf && wsf < cpw) {
+				cp = psf;
+				cpw = wsf;
+			}
+			
+			if(wsf < ff && wsf > fpw) {
+				fp = psf;
+				fpw = wsf;
+			}
+			
+			return;
+		}
+		
 
-	public void largestPnW(String s, String d) {
+		visited.add(s);
+		for (String n : vces.get(s).keySet()) {
+			if (visited.contains(n) == false) {
+				multisolver(n, d, visited, cf, ff, k, psf + n, wsf + vces.get(s).get(n));
+			}
+		}
 
-	}
-
-	public void smallestPnW(String s, String d) {
-
-	}
-
-	public void smallestPnW(String s, String d) {
-
+		visited.remove(s);
 	}
 }
