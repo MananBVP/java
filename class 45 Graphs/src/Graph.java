@@ -117,7 +117,7 @@ public class Graph {
 
 		visited.remove(src);
 	}
-	
+
 	private String sp;
 	private String lp;
 	private String cp;
@@ -127,32 +127,32 @@ public class Graph {
 	private int lpw;
 	private int cpw;
 	private int fpw;
-	
+
 	PriorityQueue<Pair> pq;
-	
-	private class Pair{
+
+	private class Pair {
 		String psf;
 		int wsf;
-		
+
 		public Pair(String psf, int wsf) {
 			this.psf = psf;
 			this.wsf = wsf;
 		}
 	}
-	
-	public void multiSolver(String s, String d, int cf, int ff,int k) {
-		sp="";
-		lp="";
-		cp="";
-		fp="";
-		
+
+	public void multiSolver(String s, String d, int cf, int ff, int k) {
+		sp = "";
+		lp = "";
+		cp = "";
+		fp = "";
+
 		spw = Integer.MAX_VALUE;
 		lpw = Integer.MIN_VALUE;
 		cpw = Integer.MAX_VALUE;
 		fpw = Integer.MIN_VALUE;
-		
+
 		pq = new PriorityQueue<>();
-		
+
 		multisolver(s, d, new HashSet<>(), cf, ff, k, s, 0);
 		System.out.println("Shortest = " + sp + "@" + spw);
 		System.out.println("Longest = " + lp + "@" + lpw);
@@ -160,41 +160,43 @@ public class Graph {
 		System.out.println("Floor = " + fp + "@" + fpw);
 		System.out.println(k + "th largest" + pq.peek().psf + "@" + pq.peek().wsf);
 	}
-	
+
 	private void multisolver(String s, String d, HashSet<String> visited, int cf, int ff, int k, String psf, int wsf) {
-		
-		if(s.equals(d)) {
+
+		if (s.equals(d)) {
 			System.out.println(psf + "@" + wsf);
-			
-			if(wsf < spw) {
+
+			if (wsf < spw) {
 				sp = psf;
 				spw = wsf;
 			}
-			
-			if(wsf > lpw) {
+
+			if (wsf > lpw) {
 				lp = psf;
 				lpw = wsf;
 			}
-			
-			if(wsf > cf && wsf < cpw) {
+
+			if (wsf > cf && wsf < cpw) {
 				cp = psf;
 				cpw = wsf;
 			}
-			
-			if(wsf < ff && wsf > fpw) {
+
+			if (wsf < ff && wsf > fpw) {
 				fp = psf;
 				fpw = wsf;
 			}
-			
-			if(pq.size() < k) {
+
+			if (pq.size() < k) {
 				pq.add(new Pair(psf, wsf));
-			}else if(pq.size() >= k) {
-				
+			} else if (pq.size() >= k) {
+				if (pq.peek().wsf < wsf) {
+					pq.remove();
+					pq.add(new Pair(psf, wsf));
+				}
 			}
-			
+
 			return;
 		}
-		
 
 		visited.add(s);
 		for (String n : vces.get(s).keySet()) {
@@ -205,71 +207,113 @@ public class Graph {
 
 		visited.remove(s);
 	}
-	
-	//<---------------------------class -> 46----------------------------->
-	private class TPair{
+
+	// <---------------------------class -> 46----------------------------->
+	private class TPair {
 		String vertex;
 		String path;
 		int wt;
-		
+
 		public TPair(String v, String p, int w) {
 			this.vertex = v;
 			this.path = p;
 			this.wt = w;
 		}
 	}
-	
+
 	public boolean bfs(String s, String d) {
 		LinkedList<TPair> queue = new LinkedList<>();
 		queue.addLast(new TPair(s, s, 0));
-		
+
 		HashSet<String> visited = new HashSet<>();
-		
-		while(queue.size() > 0) {
+
+		while (queue.size() > 0) {
 			TPair rem = queue.removeFirst();
 			visited.add(rem.vertex);
-			
+
 			System.out.println(rem.vertex + " @ " + rem.path);
-			
-			if(rem.vertex.equals(d)) {
+
+			if (rem.vertex.equals(d)) {
 				return true;
 			}
-			
-			for(String n : vces.get(rem.vertex).keySet()){
-				if(visited.contains(n) == false) {
-				TPair np = new TPair(n, rem.path + n, rem.wt + vces.get(rem.vertex).get(n));
-				queue.addLast(np);
-				} 
+
+			for (String n : vces.get(rem.vertex).keySet()) {
+				if (visited.contains(n) == false) {
+					TPair np = new TPair(n, rem.path + n, rem.wt + vces.get(rem.vertex).get(n));
+					queue.addLast(np);
+				}
 			}
 		}
-		
+
 		return false;
 	}
-	
+
 	public boolean dfs(String s, String d) {
 		LinkedList<TPair> queue = new LinkedList<>();
 		queue.addFirst(new TPair(s, s, 0));
-		
+
 		HashSet<String> visited = new HashSet<>();
-		
-		while(queue.size() > 0) {
+
+		while (queue.size() > 0) {
 			TPair rem = queue.removeFirst();
 			visited.add(rem.vertex);
-			
+
 			System.out.println(rem.vertex + " @ " + rem.path);
-			
-			if(rem.vertex.equals(d)) {
+
+			if (rem.vertex.equals(d)) {
 				return true;
 			}
-			
-			for(String n : vces.get(rem.vertex).keySet()){
-				if(visited.contains(n) == false) {
-				TPair np = new TPair(n, rem.path + n, rem.wt + vces.get(rem.vertex).get(n));
-				queue.addFirst(np);
-				} 
+
+			for (String n : vces.get(rem.vertex).keySet()) {
+				if (visited.contains(n) == false) {
+					TPair np = new TPair(n, rem.path + n, rem.wt + vces.get(rem.vertex).get(n));
+					queue.addFirst(np);
+				}
+			}
+		}
+
+		return false;
+	}
+
+	public ArrayList<String> getConnectedComponent() {
+		
+		ArrayList<String> cc= new ArrayList<>();
+		
+		HashSet<String> visited = new HashSet<>();
+		for(String v : vces.keySet()) {
+			if(visited.contains(v) == false) {
+				String comp = gccbft(v, visited);
+				cc.add(comp);
 			}
 		}
 		
-		return false;
+		return cc;
+	}
+	
+	private String gccbft(String s, HashSet<String> visited) {
+		
+		String comp = "";
+		LinkedList<String> queue = new LinkedList<>();
+		queue.addLast(s);
+
+		
+		while (queue.size() > 0) {
+			String rem = queue.removeFirst();
+			
+			if(visited.contains(rem)) {
+				continue;
+			}
+			visited.add(rem);
+		
+			comp += rem;
+
+			for (String n : vces.get(rem).keySet()) {
+				if (visited.contains(n) == false) {
+					queue.add(n);
+				}
+			}
+		}
+
+		return comp;
 	}
 }
