@@ -330,10 +330,10 @@ public class Graph {
 		HashSet<String> visited = new HashSet<>();
 		for (String v : vces.keySet()) {
 			if (visited.contains(v) == false) {
-				 boolean ans = isCyclicHelper(v, visited);
-				 if(ans) {
-					 return true;
-				 }
+				boolean ans = isCyclicHelper(v, visited);
+				if (ans) {
+					return true;
+				}
 			}
 		}
 
@@ -341,41 +341,83 @@ public class Graph {
 	}
 
 	private boolean isCyclicHelper(String s, HashSet<String> visited) {
-			String comp = "";
-			LinkedList<String> queue = new LinkedList<>();
-			queue.addLast(s);
+		String comp = "";
+		LinkedList<String> queue = new LinkedList<>();
+		queue.addLast(s);
 
-			while (queue.size() > 0) {
-				// 1. remove
-				String rem = queue.removeFirst();
+		while (queue.size() > 0) {
+			// 1. remove
+			String rem = queue.removeFirst();
 
-				// 2.mark
-				if (visited.contains(rem)) {
-					return true;
-				}
-				visited.add(rem);
+			// 2.mark
+			if (visited.contains(rem)) {
+				return true;
+			}
+			visited.add(rem);
 
-				// 3.work
-				comp += rem;
+			// 3.work
+			comp += rem;
 
-				// 4.add*
-				for (String n : vces.get(rem).keySet()) {
-					if (visited.contains(n) == false) {
-						queue.addLast(n);
-					}
+			// 4.add*
+			for (String n : vces.get(rem).keySet()) {
+				if (visited.contains(n) == false) {
+					queue.addLast(n);
 				}
 			}
+		}
 
-			return false;
+		return false;
 	}
-	
+
 	public boolean isConnected() {
-		
+
 		ArrayList<String> l = getConnectedComponent();
 		return l.size() >= 1;
 	}
 
 	public boolean isBipartite() {
 
+		HashMap<String, Integer> visited = new HashMap<>();
+		for (String v : vces.keySet()) {
+			boolean ans = isBipartiteHelper(v, visited);
+			if (ans == false) {
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	private boolean isBipartiteHelper(String s, HashMap<String, Integer> visited) {
+
+		LinkedList<String> curr = new LinkedList<>();
+		LinkedList<String> next = new LinkedList<>();
+		int level = 1;
+		curr.addLast(s);
+		visited.put(s, level);
+
+		while (curr.size() > 0) {
+			String rem = curr.removeFirst();
+			if (visited.containsKey(rem)) {
+				int oldLevel = visited.get(rem);
+				if (oldLevel % 2 != level % 2) {
+					return false;
+				}
+			}
+			visited.put(rem, level);
+			for (String n : vces.get(rem).keySet()) {
+				if (visited.containsKey(n) == false) {
+					next.addLast(n);
+				}
+			}
+
+			if (curr.size() == 0) {
+				curr = next;
+				next = new LinkedList<>();
+				level++;
+			}
+		}
+
+		return true;
 	}
 }
