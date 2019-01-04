@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.PriorityQueue;
 
 public class Graph {
 
@@ -126,6 +128,18 @@ public class Graph {
 	private int cpw;
 	private int fpw;
 	
+	PriorityQueue<Pair> pq;
+	
+	private class Pair{
+		String psf;
+		String wsf;
+		
+		public Pair(String psf, String wsf) {
+			this.psf = psf;
+			this.wsf = wsf;
+		}
+	}
+	
 	public void multiSolver(String s, String d, int cf, int ff,int k) {
 		sp="";
 		lp="";
@@ -137,11 +151,14 @@ public class Graph {
 		cpw = Integer.MAX_VALUE;
 		fpw = Integer.MIN_VALUE;
 		
+		pq = new PriorityQueue<>();
+		
 		multisolver(s, d, new HashSet<>(), cf, ff, k, s, 0);
 		System.out.println("Shortest = " + sp + "@" + spw);
 		System.out.println("Longest = " + lp + "@" + lpw);
 		System.out.println("Ceil = " + cp + "@" + cpw);
 		System.out.println("Floor = " + fp + "@" + fpw);
+		System.out.println(k + "th largest" + pq.peek().psf + "@" + pq.peek().wsf);
 	}
 	
 	private void multisolver(String s, String d, HashSet<String> visited, int cf, int ff, int k, String psf, int wsf) {
@@ -169,6 +186,11 @@ public class Graph {
 				fpw = wsf;
 			}
 			
+			if(pq.size() < k) {
+				pq.add(new Pair(psf, wsf));
+			}
+			
+			
 			return;
 		}
 		
@@ -181,5 +203,45 @@ public class Graph {
 		}
 
 		visited.remove(s);
+	}
+	
+	//<---------------------------class -> 46----------------------------->
+	private class TPair{
+		String vertex;
+		String path;
+		int wt;
+		
+		public TPair(String v, String p, int w) {
+			this.vertex = v;
+			this.path = p;
+			this.wt = w;
+		}
+	}
+	
+	public boolean bfs(String s, String d) {
+		LinkedList<TPair> queue = new LinkedList<>();
+		queue.addLast(new TPair(s, s, 0));
+		
+		HashSet<String> visited = new HashSet<>();
+		
+		while(queue.size() > 0) {
+			TPair rem = queue.removeFirst();
+			visited.add(rem.vertex);
+			
+			System.out.println(rem.vertex + "@" + rem.path);
+			
+			if(rem.vertex.equals(d)) {
+				return true;
+			}
+			
+			for(String n : vces.get(rem.vertex).keySet()){
+				if(visited.contains(n) == false) {
+				TPair np = new TPair(n, rem.path + n, rem.wt + vces.get(rem.vertex).get(n));
+				queue.addLast(np);
+				} 
+			}
+		}
+		
+		return false;
 	}
 }
