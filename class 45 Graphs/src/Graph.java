@@ -229,7 +229,7 @@ public class Graph {
 			TPair rem = queue.removeFirst();
 			visited.add(rem.vertex);
 			
-			System.out.println(rem.vertex + "@" + rem.path);
+			System.out.println(rem.vertex + " @ " + rem.path);
 			
 			if(rem.vertex.equals(d)) {
 				return true;
@@ -256,7 +256,7 @@ public class Graph {
 			TPair rem = queue.removeFirst();
 			visited.add(rem.vertex);
 			
-			System.out.println(rem.vertex + "@" + rem.path);
+			System.out.println(rem.vertex + " @ " + rem.path);
 			
 			if(rem.vertex.equals(d)) {
 				return true;
