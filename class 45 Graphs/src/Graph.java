@@ -298,15 +298,19 @@ public class Graph {
 
 		
 		while (queue.size() > 0) {
+			//1. remove
 			String rem = queue.removeFirst();
 			
+			//2.mark
 			if(visited.contains(rem)) {
 				continue;
 			}
 			visited.add(rem);
 		
+			//3.work
 			comp += rem;
 
+			//4.add*
 			for (String n : vces.get(rem).keySet()) {
 				if (visited.contains(n) == false) {
 					queue.add(n);
