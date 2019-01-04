@@ -281,41 +281,40 @@ public class Graph {
 	}
 
 	public ArrayList<String> getConnectedComponent() {
-		
-		ArrayList<String> cc= new ArrayList<>();
-		
+
+		ArrayList<String> cc = new ArrayList<>();
+
 		HashSet<String> visited = new HashSet<>();
-		for(String v : vces.keySet()) {
-			if(visited.contains(v) == false) {
+		for (String v : vces.keySet()) {
+			if (visited.contains(v) == false) {
 				String comp = gccbft(v, visited);
 				cc.add(comp);
 			}
 		}
-		
+
 		return cc;
 	}
-	
+
 	private String gccbft(String s, HashSet<String> visited) {
-		
+
 		String comp = "";
 		LinkedList<String> queue = new LinkedList<>();
 		queue.addLast(s);
 
-		
 		while (queue.size() > 0) {
-			//1. remove
+			// 1. remove
 			String rem = queue.removeFirst();
-			
-			//2.mark
-			if(visited.contains(rem)) {
+
+			// 2.mark
+			if (visited.contains(rem)) {
 				continue;
 			}
 			visited.add(rem);
-		
-			//3.work
+
+			// 3.work
 			comp += rem;
 
-			//4.add*
+			// 4.add*
 			for (String n : vces.get(rem).keySet()) {
 				if (visited.contains(n) == false) {
 					queue.addLast(n);
@@ -324,5 +323,59 @@ public class Graph {
 		}
 
 		return comp;
+	}
+
+	public boolean isCyclic() {
+
+		HashSet<String> visited = new HashSet<>();
+		for (String v : vces.keySet()) {
+			if (visited.contains(v) == false) {
+				 boolean ans = isCyclicHelper(v, visited);
+				 if(ans) {
+					 return true;
+				 }
+			}
+		}
+
+		return false;
+	}
+
+	private boolean isCyclicHelper(String s, HashSet<String> visited) {
+			String comp = "";
+			LinkedList<String> queue = new LinkedList<>();
+			queue.addLast(s);
+
+			while (queue.size() > 0) {
+				// 1. remove
+				String rem = queue.removeFirst();
+
+				// 2.mark
+				if (visited.contains(rem)) {
+					return true;
+				}
+				visited.add(rem);
+
+				// 3.work
+				comp += rem;
+
+				// 4.add*
+				for (String n : vces.get(rem).keySet()) {
+					if (visited.contains(n) == false) {
+						queue.addLast(n);
+					}
+				}
+			}
+
+			return false;
+	}
+	
+	public boolean isConnected() {
+		
+		ArrayList<String> l = getConnectedComponent();
+		return l.size() >= 1;
+	}
+
+	public boolean isBipartite() {
+
 	}
 }
