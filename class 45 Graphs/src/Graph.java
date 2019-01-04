@@ -313,7 +313,7 @@ public class Graph {
 			//4.add*
 			for (String n : vces.get(rem).keySet()) {
 				if (visited.contains(n) == false) {
-					queue.add(n);
+					queue.addLast(n);
 				}
 			}
 		}
