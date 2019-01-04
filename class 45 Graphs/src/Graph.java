@@ -130,13 +130,18 @@ public class Graph {
 
 	PriorityQueue<Pair> pq;
 
-	private class Pair {
+	private class Pair implements Comparable<Pair> {
 		String psf;
 		int wsf;
 
 		public Pair(String psf, int wsf) {
 			this.psf = psf;
 			this.wsf = wsf;
+		}
+
+		@Override
+		public int compareTo(Pair o) {
+			return this.wsf - o.wsf;
 		}
 	}
 
