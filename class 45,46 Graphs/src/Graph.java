@@ -379,12 +379,13 @@ public class Graph {
 
 		HashMap<String, Integer> visited = new HashMap<>();
 		for (String v : vces.keySet()) {
-			boolean ans = isBipartiteHelper(v, visited);
-			if (ans == false) {
-				return false;
+			if (visited.containsKey(v) == false) {
+				boolean ans = isBipartiteHelper(v, visited);
+				if (ans == false) {
+					return false;
+				}
 			}
 		}
-
 		return true;
 	}
 
@@ -394,7 +395,6 @@ public class Graph {
 		LinkedList<String> next = new LinkedList<>();
 		int level = 1;
 		curr.addLast(s);
-		visited.put(s, level);
 
 		while (curr.size() > 0) {
 			String rem = curr.removeFirst();
