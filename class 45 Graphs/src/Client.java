@@ -22,7 +22,8 @@ public class Client {
 		g.addEdge("F", "G", 3);
 		
 		g.display();
-		System.out.println(g.bfs("A", "G"));
+//		System.out.println(g.bfs("A", "G"));
+		System.out.println(g.dfs("A", "G"));
 //		g.removeEdge("B", "C");
 //		g.display();
 //		g.removeVertex("D");

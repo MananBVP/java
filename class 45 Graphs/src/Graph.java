@@ -132,9 +132,9 @@ public class Graph {
 	
 	private class Pair{
 		String psf;
-		String wsf;
+		int wsf;
 		
-		public Pair(String psf, String wsf) {
+		public Pair(String psf, int wsf) {
 			this.psf = psf;
 			this.wsf = wsf;
 		}
@@ -188,8 +188,9 @@ public class Graph {
 			
 			if(pq.size() < k) {
 				pq.add(new Pair(psf, wsf));
+			}else if(pq.size() >= k) {
+				
 			}
-			
 			
 			return;
 		}
@@ -238,6 +239,33 @@ public class Graph {
 				if(visited.contains(n) == false) {
 				TPair np = new TPair(n, rem.path + n, rem.wt + vces.get(rem.vertex).get(n));
 				queue.addLast(np);
+				} 
+			}
+		}
+		
+		return false;
+	}
+	
+	public boolean dfs(String s, String d) {
+		LinkedList<TPair> queue = new LinkedList<>();
+		queue.addFirst(new TPair(s, s, 0));
+		
+		HashSet<String> visited = new HashSet<>();
+		
+		while(queue.size() > 0) {
+			TPair rem = queue.removeFirst();
+			visited.add(rem.vertex);
+			
+			System.out.println(rem.vertex + "@" + rem.path);
+			
+			if(rem.vertex.equals(d)) {
+				return true;
+			}
+			
+			for(String n : vces.get(rem.vertex).keySet()){
+				if(visited.contains(n) == false) {
+				TPair np = new TPair(n, rem.path + n, rem.wt + vces.get(rem.vertex).get(n));
+				queue.addFirst(np);
 				} 
 			}
 		}
