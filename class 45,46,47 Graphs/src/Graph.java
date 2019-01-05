@@ -420,33 +420,32 @@ public class Graph {
 
 		return true;
 	}
-	
+
 	public void printHamiltonianCnP(String s) {
 		HashSet<String> visited = new HashSet<>();
 		visited.add(s);
-    
+
 		printHamiltonianCnP(s, visited, s, s);
 	}
-	
+
 	private void printHamiltonianCnP(String s, HashSet<String> visited, String psf, String os) {
-		
-		if(visited.size() == vces.size()) {
+
+		if (visited.size() == vces.size()) {
 			System.out.print(psf + " is HP");
-			if(containsEdges(s, os)) {
+			if (containsEdges(s, os)) {
 				System.out.println(" and HC");
-			}else {
+			} else {
 				System.out.println(".");
 			}
 		}
-		
-		for(String n : vces.get(s).keySet()) {
-			if(visited.contains(n) == false) {
+
+		for (String n : vces.get(s).keySet()) {
+			if (visited.contains(n) == false) {
 				visited.add(n);
 				printHamiltonianCnP(n, visited, psf + n, os);
 				visited.remove(n);
 			}
 		}
 	}
-	
-	
+
 }
