@@ -421,5 +421,26 @@ public class Graph {
 		return true;
 	}
 	
-	public void 
+	public void printHamiltonianCnP(String s) {
+		HashSet<String> visited = new HashSet<>();
+		visited.add(s);
+    
+		printHamiltonianCnP(s, visited, s);
+	}
+	
+	private void printHamiltonianCnP(String s, HashSet<String> visited, String psf) {
+		
+		if(visited.size() == vces.size()) {
+			System.out.println(psf);
+			return;
+		}
+		
+		for(String n : vces.get(s).keySet()) {
+			if(visited.contains(n) == false) {
+				visited.add(n);
+				printHamiltonianCnP(n, visited, psf + n);
+				visited.remove(n);
+			}
+		}
+	}
 }
