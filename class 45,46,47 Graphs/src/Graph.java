@@ -466,9 +466,9 @@ public class Graph {
 	}
 
 	public void Dijkstra(String s) {
-		
+
 		PriorityQueue<DPair> pq = new PriorityQueue<>();
-		HashSet<String> visited =new HashSet<>();
+		HashSet<String> visited = new HashSet<>();
 		pq.add(new DPair(s, s, 0));
 
 		while (pq.size() > 0) {
@@ -481,7 +481,7 @@ public class Graph {
 			}
 			visited.add(rem.v);
 
-			//3.work
+			// 3.work
 			System.out.println(rem.v + " via " + rem.psf + " @ " + rem.wsf);
 
 			// 4.add*
@@ -490,7 +490,63 @@ public class Graph {
 					DPair np = new DPair(n, rem.psf + n, rem.wsf + vces.get(rem.v).get(n));
 					pq.add(np);
 				}
+			}
 		}
 	}
-}
+
+	private class PPair implements Comparable<PPair> {
+		String v;
+		String av;
+		int avw;
+
+		public PPair(String v, String av, int avw) {
+			this.v = v;
+			this.av = av;
+			this.avw = avw;
+		}
+
+		@Override
+		public int compareTo(PPair o) {
+			return this.avw - o.avw;
+		}
+	}
+
+	public Graph prims() {
+		if (isConnected() == false) {
+			return null;
+		}
+
+		Graph mst = new Graph();
+		ArrayList<String> allvces = new ArrayList<>(vces.keySet());
+		PriorityQueue<PPair> pq = new PriorityQueue<>();
+		HashSet<String> visited = new HashSet<>();
+
+		String s = allvces.get(0);
+
+		pq.add(new PPair(s, null, 0));
+
+		while (pq.size() > 0) {
+			PPair rem = pq.remove();
+
+			if (visited.contains(rem.v))
+				continue;
+
+			visited.add(rem.v);
+
+			mst.addVertex(rem.v);
+			if (rem.av != null) {
+				mst.addEdge(rem.av, rem.v, vces.get(rem.av).get(rem.v));
+			}
+
+			for (String n : vces.get(rem.v).keySet()) {
+				if (visited.contains(n) == false) {
+					PPair np = new PPair(n, rem.v, vces.get(rem.v).get(n));
+					pq.add(np);
+				}
+			}
+
+		}
+
+		return mst;
+	}
 }

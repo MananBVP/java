@@ -61,6 +61,8 @@ public class Client {
 
 //		isKnightsTour(new int[5][5], 1, 3, 1);
 		g.Dijkstra("A");
+		Graph mst = g.prims();
+		mst.display();
 
 	}
 
