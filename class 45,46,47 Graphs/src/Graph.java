@@ -448,4 +448,48 @@ public class Graph {
 		}
 	}
 
+	private class DPair implements Comparable<DPair> {
+		String v;
+		String psf;
+		int wsf;
+
+		public DPair(String v, String psf, int wsf) {
+			this.v = v;
+			this.psf = psf;
+			this.wsf = wsf;
+		}
+
+		@Override
+		public int compareTo(DPair o) {
+			return this.wsf - o.wsf;
+		}
+	}
+
+	public void Dijkstra(String s) {
+		
+		PriorityQueue<DPair> pq = new PriorityQueue<>();
+		HashSet<String> visited =new HashSet<>();
+		pq.add(new DPair(s, s, 0));
+
+		while (pq.size() > 0) {
+			// 1. remove
+			DPair rem = pq.remove();
+
+			// 2.mark
+			if (visited.contains(rem.v)) {
+				continue;
+			}
+			visited.add(rem.v);
+
+			System.out.println(rem.v + " via " + rem.psf + " @ " + rem.wsf);
+
+			// 4.add*
+			for (String n : vces.get(rem.v).keySet()) {
+				if (visited.contains(n) == false) {
+					DPair np = new DPair(n, rem.psf + n, rem.wsf + vces.get(rem.v).get(n));
+					pq.add(np);
+				}
+		}
+	}
+}
 }
