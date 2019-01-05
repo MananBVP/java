@@ -481,6 +481,7 @@ public class Graph {
 			}
 			visited.add(rem.v);
 
+			//3.work
 			System.out.println(rem.v + " via " + rem.psf + " @ " + rem.wsf);
 
 			// 4.add*
