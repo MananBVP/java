@@ -20,6 +20,7 @@ public class Client {
 		g.addEdge("E", "F", 3);
 		g.addEdge("E", "G", 8);
 		g.addEdge("F", "G", 3);
+		g.addEdge("C", "F", 1);
 		
 		g.display();
 //		System.out.println(g.bfs("A", "G"));
@@ -36,7 +37,7 @@ public class Client {
 //		System.out.println(g.isCyclic());
 //		System.out.println(g.isConnected());
 //		System.out.println(g.isBipartite());
-		g.printHamiltonianCnP("A");
+		g.printHamiltonianCnP("C");
 		
 		
 //		Graph g = new Graph();
@@ -58,6 +59,8 @@ public class Client {
 		
 //		g.printallpaths("A", "F");
 //		g.multiSolver("A", "F", 14, 15, 2);
+	
+	
+		
 	}
-
 }
