@@ -535,7 +535,7 @@ public class Graph {
 
 			mst.addVertex(rem.v);
 			if (rem.av != null) {
-				mst.addEdge(rem.av, rem.v, vces.get(rem.av).get(rem.v));
+				mst.addEdge(rem.av, rem.v, rem.avw);
 			}
 
 			for (String n : vces.get(rem.v).keySet()) {
