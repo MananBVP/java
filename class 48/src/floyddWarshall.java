@@ -36,6 +36,5 @@ public class floyddWarshall {
 			}
 			System.out.println();
 		}
-
 	}
 }
