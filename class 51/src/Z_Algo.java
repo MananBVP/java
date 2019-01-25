@@ -14,7 +14,7 @@ public class Z_Algo {
 		zarray = preprocess(con);
 		for (int i = 1; i < con.length(); i++) {
 			if (zarray[i] == p.length()) {
-				System.out.println(p + " found at " + (i - p.length() + 1));
+				System.out.println(p + " found at " + (i - p.length() - 1));
 			}
 		}
 
@@ -47,7 +47,7 @@ public class Z_Algo {
 				}
 			}
 		}
-		
+
 		return z;
 	}
 
