@@ -3,8 +3,10 @@ public class Z_Algo {
 
 	public static void main(String[] args) {
 
-		String s = "fbdbfeziokfnjdnqaoknfkqemefieqnmioknfalknlknfkkanziokfn";
-		String p = "ziokfn";
+//		String s = "fbdbfeziokfnjdnqaoknfkqemefieqnmioknfalknlknfkkanziokfn";
+//		String p = "ziokfn";
+		String s = "aaabbbb";
+		String p = "aab";
 		patternMatching(s, p);
 	}
 
@@ -50,5 +52,4 @@ public class Z_Algo {
 
 		return z;
 	}
-
 }
