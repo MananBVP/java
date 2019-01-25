@@ -36,7 +36,7 @@ public class Z_Algo {
 			} else {
 				int k = i - l;
 				if (z[k] < r - i + 1) {
-					z[i] = z[k];
+					z[i] = z[k]; // small bubble equal condition
 				} else {
 					l = i;
 					while (r < con.length() && con.charAt(r) == con.charAt(r - l)) {
